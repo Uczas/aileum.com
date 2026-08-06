@@ -3,400 +3,387 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Aileum Technologies LTD – AI, Software Engineering & IT Consultancy in Nigeria" />
     <title>Aileum Technologies LTD – AI & Software Engineering</title>
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Font Awesome 6 (Free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #0a0a0f;
-            color: #e4e4e7;
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Glow effect overlay */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 40%, rgba(0, 180, 255, 0.04) 0%, transparent 60%),
-                        radial-gradient(circle at 70% 70%, rgba(120, 50, 255, 0.03) 0%, transparent 50%);
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            position: relative;
-            z-index: 1;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* ===== NAVBAR ===== */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 28px 0 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .logo {
-            font-size: 26px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #60a5fa, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .logo span {
-            font-weight: 300;
-            font-size: 14px;
-            background: none;
-            -webkit-text-fill-color: #6b7280;
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .nav-links a {
-            color: #a1a1aa;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: #ffffff;
-        }
-
-        .nav-cta {
-            background: #2563eb;
-            color: #fff !important;
-            padding: 10px 24px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 13px;
-            transition: background 0.3s;
-        }
-
-        .nav-cta:hover {
-            background: #3b82f6 !important;
-            color: #fff !important;
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 60px 0 40px;
-            max-width: 820px;
-        }
-
-        .badge {
-            display: inline-block;
-            background: rgba(37, 99, 235, 0.12);
-            color: #60a5fa;
-            font-size: 12px;
-            font-weight: 600;
-            padding: 6px 16px;
-            border-radius: 40px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-            border: 1px solid rgba(37, 99, 235, 0.15);
-            width: fit-content;
-        }
-
-        .hero h1 {
-            font-size: clamp(40px, 8vw, 70px);
-            font-weight: 800;
-            line-height: 1.05;
-            letter-spacing: -2px;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 .highlight {
-            background: linear-gradient(135deg, #60a5fa, #a78bfa, #60a5fa);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 4s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-            0% { background-position: 0% center; }
-            50% { background-position: 200% center; }
-            100% { background-position: 0% center; }
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: #a1a1aa;
-            max-width: 580px;
-            margin-bottom: 36px;
-            font-weight: 300;
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            align-items: center;
-        }
-
-        .btn-primary {
-            background: #2563eb;
-            color: #fff;
-            padding: 14px 36px;
-            border-radius: 40px;
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 15px;
-            transition: background 0.3s, transform 0.15s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .btn-primary:hover {
-            background: #3b82f6;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            color: #a1a1aa;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: color 0.2s;
-            padding: 14px 20px;
-        }
-
-        .btn-secondary:hover {
-            color: #ffffff;
-        }
-
-        .btn-secondary i {
-            font-size: 14px;
-        }
-
-        /* ===== TRUST / CLIENTS BAR ===== */
-        .trust-bar {
-            margin-top: 56px;
-            padding-top: 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 16px 40px;
-        }
-
-        .trust-bar .label {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #52525b;
-            font-weight: 600;
-        }
-
-        .trust-bar .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 24px 40px;
-            color: #6b7280;
-            font-weight: 400;
-            font-size: 14px;
-        }
-
-        .trust-bar .tech-stack i {
-            margin-right: 8px;
-            color: #52525b;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            padding: 24px 0 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
-            font-size: 13px;
-            color: #52525b;
-            margin-top: 20px;
-        }
-
-        footer a {
-            color: #6b7280;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        footer a:hover {
-            color: #a1a1aa;
-        }
-
-        footer .socials {
-            display: flex;
-            gap: 20px;
-        }
-
-        footer .socials a {
-            font-size: 16px;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 700px) {
-            nav {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
-
-            .nav-links {
-                flex-wrap: wrap;
-                gap: 16px 24px;
-                width: 100%;
-            }
-
-            .nav-cta {
-                margin-left: 0;
-            }
-
-            .hero {
-                padding: 40px 0 20px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .btn-primary,
-            .btn-secondary {
-                justify-content: center;
-                text-align: center;
-            }
-
-            .trust-bar {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-            }
-
-            .trust-bar .tech-stack {
-                gap: 12px 24px;
-            }
-
-            footer {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-        }
-    </style>
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
 
-    <div class="container">
-        <!-- NAVBAR -->
-        <nav>
-            <div class="logo">
-                AILEUM <span>TECHNOLOGIES</span>
-            </div>
-            <div class="nav-links">
-                <a href="#services">Services</a>
-                <a href="#about">About</a>
-                <a href="#contact" class="nav-cta">Let's Talk</a>
-            </div>
-        </nav>
-
-        <!-- HERO SECTION -->
-        <section class="hero">
-            <div class="badge">
-                <i class="fas fa-robot" style="margin-right: 6px;"></i> AI & Software Engineering
-            </div>
-
-            <h1>
-                Engineering <br />
-                <span class="highlight">Intelligent Software</span>
-            </h1>
-
-            <p>
-                Aileum Technologies delivers AI-driven web applications, data analytics dashboards, 
-                and enterprise IT solutions — built for scalability, security, and performance.
-            </p>
-
-            <div class="hero-buttons">
-                <a href="#contact" class="btn-primary">
-                    <i class="fas fa-rocket"></i> Start a Project
-                </a>
-                <a href="#services" class="btn-secondary">
-                    <i class="fas fa-arrow-right"></i> Explore Services
-                </a>
-            </div>
-
-            <!-- Trust Bar / Tech Stack -->
-            <div class="trust-bar">
-                <span class="label">Our Toolset</span>
-                <div class="tech-stack">
-                    <span><i class="fab fa-python"></i> Python</span>
-                    <span><i class="fas fa-brain"></i> AI/ML</span>
-                    <span><i class="fab fa-react"></i> React</span>
-                    <span><i class="fas fa-cloud"></i> Cloud</span>
-                    <span><i class="fas fa-database"></i> Data Analytics</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer>
-            <div>
-                &copy; 2026 <strong>Aileum Technologies LTD</strong> — Built in Lagos, Nigeria
-            </div>
-            <div class="socials">
-                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-x-twitter"></i></a>
-                <a href="mailto:hello@aileum.com"><i class="fas fa-envelope"></i></a>
-            </div>
-        </footer>
+    <!-- ============ PRELOADER ============ -->
+    <div id="preloader">
+        <div class="loader"></div>
     </div>
 
+    <!-- ============ NAVIGATION ============ -->
+    <header id="navbar">
+        <nav class="container">
+            <div class="logo">
+                <img src="images/aileum.png" alt="Aileum Technologies Logo" />
+                <span>AILEUM</span>
+            </div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <a href="#contact" class="btn-primary btn-sm">Get Started</a>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ============ HERO SECTION ============ -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="hero-badge">
+                        <i class="fas fa-robot"></i> AI & Software Engineering
+                    </div>
+                    <h1>
+                        Engineering <br />
+                        <span class="gradient-text">Intelligent Software</span>
+                    </h1>
+                    <p>
+                        Aileum Technologies delivers AI-driven web applications, data analytics dashboards, 
+                        and enterprise IT solutions — built for scalability, security, and performance.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn-primary">
+                            <i class="fas fa-rocket"></i> Start a Project
+                        </a>
+                        <a href="#services" class="btn-secondary">
+                            <i class="fas fa-arrow-right"></i> Explore Services
+                        </a>
+                    </div>
+                    
+                    <!-- Trust indicators -->
+                    <div class="trust-indicators">
+                        <div class="trust-item">
+                            <i class="fas fa-code"></i>
+                            <span>10+ Projects</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="fas fa-users"></i>
+                            <span>100% Client Satisfaction</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Lagos, Nigeria</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-visual" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="floating-cards">
+                        <div class="float-card card-1">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="float-card card-2">
+                            <i class="fas fa-brain"></i>
+                            <span>AI/ML</span>
+                        </div>
+                        <div class="float-card card-3">
+                            <i class="fab fa-react"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="float-card card-4">
+                            <i class="fas fa-cloud"></i>
+                            <span>Cloud</span>
+                        </div>
+                        <div class="float-card card-5">
+                            <i class="fas fa-database"></i>
+                            <span>Data</span>
+                        </div>
+                    </div>
+                    <div class="hero-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SERVICES SECTION ============ -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">What We Do</span>
+                <h2>Our <span class="gradient-text">Services</span></h2>
+                <p>End-to-end software solutions tailored for your business needs</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI & Machine Learning</h3>
+                    <p>Custom AI models, predictive analytics, natural language processing, and computer vision solutions.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Predictive Modeling</li>
+                        <li><i class="fas fa-check"></i> NLP & Chatbots</li>
+                        <li><i class="fas fa-check"></i> Computer Vision</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web & Software Engineering</h3>
+                    <p>Full-stack web applications, intranet systems, and enterprise-grade software architecture.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> React & Next.js</li>
+                        <li><i class="fas fa-check"></i> Django & Flask</li>
+                        <li><i class="fas fa-check"></i> Cloud Deployment</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Data Analytics & Dashboards</h3>
+                    <p>Interactive dashboards, business intelligence, and data visualization for informed decision-making.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Power BI & Tableau</li>
+                        <li><i class="fas fa-check"></i> Real-time Analytics</li>
+                        <li><i class="fas fa-check"></i> ETL Pipelines</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">
+                        <i class="fas fa-consulting"></i>
+                    </div>
+                    <h3>IT Consultancy</h3>
+                    <p>Strategic technology advisory, digital transformation, and software architecture planning.</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Tech Strategy</li>
+                        <li><i class="fas fa-check"></i> Architecture Design</li>
+                        <li><i class="fas fa-check"></i> Team Training</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ABOUT SECTION ============ -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image" data-aos="fade-right">
+                    <div class="about-image-placeholder">
+                        <i class="fas fa-building"></i>
+                        <span>Aileum Technologies</span>
+                    </div>
+                </div>
+                <div class="about-content" data-aos="fade-left">
+                    <div class="section-header" style="text-align: left;">
+                        <span class="section-tag">About Us</span>
+                        <h2>Building the <span class="gradient-text">Future</span> of Software</h2>
+                    </div>
+                    <p>
+                        Aileum Technologies LTD is a Lagos-based software engineering and AI research company 
+                        dedicated to solving complex problems through intelligent technology.
+                    </p>
+                    <p>
+                        Founded by passionate engineers, we combine cutting-edge research with practical 
+                        implementation to deliver solutions that drive real business value.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number" data-count="10">0</span>
+                            <span class="stat-label">Projects Delivered</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-count="100">0</span>
+                            <span class="stat-label">% Satisfaction</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" data-count="24">0</span>
+                            <span class="stat-label">/7 Support</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn-primary">
+                        <i class="fas fa-handshake"></i> Work With Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PORTFOLIO SECTION ============ -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Our Work</span>
+                <h2>Featured <span class="gradient-text">Projects</span></h2>
+                <p>Some of the solutions we've built for our clients</p>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-aos="flip-up" data-aos-delay="100">
+                    <div class="portfolio-image">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>Sales Analytics Dashboard</h4>
+                        <p>Real-time business intelligence for a retail chain</p>
+                        <span class="portfolio-tag">Data Analytics</span>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-aos="flip-up" data-aos-delay="200">
+                    <div class="portfolio-image">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>AI Customer Support Bot</h4>
+                        <p>NLP-powered chatbot for a fintech company</p>
+                        <span class="portfolio-tag">AI/ML</span>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-aos="flip-up" data-aos-delay="300">
+                    <div class="portfolio-image">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>Enterprise Intranet System</h4>
+                        <p>Internal communication platform for a corporate firm</p>
+                        <span class="portfolio-tag">Web Engineering</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CONTACT SECTION ============ -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Get in Touch</span>
+                <h2>Let's Build <span class="gradient-text">Something Great</span></h2>
+                <p>Have a project in mind? We'd love to hear from you.</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:hello@aileum.com">hello@aileum.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <a href="tel:+2348000000000">+234 800 000 0000</a>
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Lagos, Nigeria</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <form class="contact-form" data-aos="fade-left" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Your Name" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Your Email" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" placeholder="Subject" />
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" placeholder="Tell us about your project..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="images/aileum.png" alt="Aileum Technologies" />
+                    <h3>AILEUM</h3>
+                    <p>Engineering intelligent software for the future.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#services">Services</a>
+                    <a href="#about">About</a>
+                    <a href="#portfolio">Portfolio</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <a href="#services">AI & ML</a>
+                    <a href="#services">Web Engineering</a>
+                    <a href="#services">Data Analytics</a>
+                    <a href="#services">IT Consultancy</a>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe for tech insights and updates</p>
+                    <form id="newsletterForm">
+                        <input type="email" placeholder="Your email" required />
+                        <button type="submit"><i class="fas fa-arrow-right"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 <strong>Aileum Technologies LTD</strong>. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============ SCRIPTS ============ -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/javascript/main.js"></script>
 </body>
 </html>

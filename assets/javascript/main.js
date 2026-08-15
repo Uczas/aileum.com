@@ -9,6 +9,113 @@ window.addEventListener('load', () => {
 });
 
 // ========================================
+// FALLING LINES BACKGROUND EFFECT
+// ========================================
+const canvas = document.getElementById('fallingLines');
+const ctx = canvas.getContext('2d');
+
+let lines = [];
+let animationId;
+let isRunning = true;
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+function getLineColor() {
+    const rootStyle = getComputedStyle(document.documentElement);
+    return rootStyle.getPropertyValue('--line-color').trim() || 'rgba(37, 99, 235, 0.15)';
+}
+
+function createLines() {
+    const lineCount = Math.min(50, Math.floor(window.innerWidth / 30));
+    lines = [];
+    
+    for (let i = 0; i < lineCount; i++) {
+        lines.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            length: Math.random() * 80 + 40,
+            speed: Math.random() * 1.5 + 0.5,
+            opacity: Math.random() * 0.4 + 0.1,
+            width: Math.random() * 1.5 + 0.5
+        });
+    }
+}
+
+function drawLines() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    const lineColor = getLineColor();
+    
+    lines.forEach(line => {
+        // Create gradient for each line
+        const gradient = ctx.createLinearGradient(line.x, line.y, line.x, line.y + line.length);
+        gradient.addColorStop(0, lineColor.replace(/[\d.]+\)$/, '0)'));
+        gradient.addColorStop(0.5, lineColor);
+        gradient.addColorStop(1, lineColor.replace(/[\d.]+\)$/, '0)'));
+        
+        ctx.beginPath();
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = line.width;
+        ctx.moveTo(line.x, line.y);
+        ctx.lineTo(line.x, line.y + line.length);
+        ctx.stroke();
+        
+        // Move line down
+        line.y += line.speed;
+        
+        // Reset when line goes off screen
+        if (line.y > canvas.height) {
+            line.y = -line.length;
+            line.x = Math.random() * canvas.width;
+            line.speed = Math.random() * 1.5 + 0.5;
+        }
+    });
+    
+    if (isRunning) {
+        animationId = requestAnimationFrame(drawLines);
+    }
+}
+
+function initFallingLines() {
+    resizeCanvas();
+    createLines();
+    drawLines();
+}
+
+// Handle window resize
+window.addEventListener('resize', () => {
+    resizeCanvas();
+    createLines();
+});
+
+// Handle theme change (update line colors)
+const themeObserver = new MutationObserver(() => {
+    // Colors update automatically on next frame via getLineColor()
+});
+
+themeObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme']
+});
+
+// Start the effect
+initFallingLines();
+
+// Pause when page is not visible (performance)
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        isRunning = false;
+        cancelAnimationFrame(animationId);
+    } else {
+        isRunning = true;
+        drawLines();
+    }
+});
+
+// ========================================
 // THEME TOGGLE (Dark/Light Mode)
 // ========================================
 const themeToggle = document.getElementById('themeToggle');

@@ -1407,3 +1407,16 @@ footer {
         font-size: 28px;
     }
 }
+
+/* ========================================
+   FOOTER REGISTRATION INFO
+   ======================================== */
+.footer-bottom p {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.footer-bottom p i {
+    color: var(--primary);
+}

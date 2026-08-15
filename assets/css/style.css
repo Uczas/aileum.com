@@ -1331,6 +1331,44 @@ footer {
         display: flex;
     }
     
+    /* Mobile Nav Adjustments */
+    #navbar nav {
+        gap: 10px;
+    }
+    
+    .logo {
+        gap: 8px;
+        font-size: 18px;
+    }
+    
+    .logo img {
+        height: 30px;
+    }
+    
+    .nav-actions {
+        gap: 10px;
+    }
+    
+    .nav-actions .btn-primary {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    
+    .theme-toggle {
+        width: 36px;
+        height: 36px;
+        font-size: 15px;
+    }
+    
+    .hamburger span {
+        width: 22px;
+        height: 2px;
+    }
+    
+    .hamburger {
+        gap: 4px;
+    }
+    
     .hero {
         padding: 100px 0 40px;
         min-height: auto;
@@ -1386,6 +1424,41 @@ footer {
 }
 
 @media (max-width: 480px) {
+    .logo {
+        font-size: 16px;
+    }
+    
+    .logo img {
+        height: 26px;
+    }
+    
+    .nav-actions {
+        gap: 8px;
+    }
+    
+    .nav-actions .btn-primary {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+    
+    .theme-toggle {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+    
+    .hamburger span {
+        width: 20px;
+    }
+    
+    #navbar {
+        padding: 12px 0;
+    }
+    
+    #navbar.scrolled {
+        padding: 8px 0;
+    }
+    
     .hero-buttons {
         flex-direction: column;
         align-items: center;
@@ -1407,7 +1480,6 @@ footer {
         font-size: 28px;
     }
 }
-
 /* ========================================
    FOOTER REGISTRATION INFO
    ======================================== */

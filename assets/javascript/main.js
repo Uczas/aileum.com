@@ -9,6 +9,27 @@ window.addEventListener('load', () => {
 });
 
 // ========================================
+// THEME TOGGLE (Dark/Light Mode)
+// ========================================
+const themeToggle = document.getElementById('themeToggle');
+const root = document.documentElement;
+
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('aileum-theme');
+if (savedTheme) {
+    root.setAttribute('data-theme', savedTheme);
+}
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = root.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        root.setAttribute('data-theme', newTheme);
+        localStorage.setItem('aileum-theme', newTheme);
+    });
+}
+
+// ========================================
 // NAVBAR SCROLL EFFECT
 // ========================================
 const navbar = document.getElementById('navbar');
@@ -264,4 +285,4 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-console.log('🚀 Aileum Technologies — Engineering Intelligent Software');
+console.log('🚀 Aileum Technologies — Turning Data & Ideas into Solutions');

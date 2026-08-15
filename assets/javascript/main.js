@@ -23,23 +23,18 @@ function resizeCanvas() {
     canvas.height = window.innerHeight;
 }
 
-function getLineColor() {
-    const rootStyle = getComputedStyle(document.documentElement);
-    return rootStyle.getPropertyValue('--line-color').trim() || 'rgba(37, 99, 235, 0.15)';
-}
-
 function createLines() {
-    const lineCount = Math.min(50, Math.floor(window.innerWidth / 30));
+    const lineCount = Math.min(60, Math.floor(window.innerWidth / 20));
     lines = [];
     
     for (let i = 0; i < lineCount; i++) {
         lines.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            length: Math.random() * 80 + 40,
-            speed: Math.random() * 1.5 + 0.5,
-            opacity: Math.random() * 0.4 + 0.1,
-            width: Math.random() * 1.5 + 0.5
+            length: Math.random() * 100 + 50,
+            speed: Math.random() * 2 + 0.8,
+            opacity: Math.random() * 0.5 + 0.2,
+            width: Math.random() * 2 + 0.5
         });
     }
 }
@@ -47,18 +42,17 @@ function createLines() {
 function drawLines() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    const lineColor = getLineColor();
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
     
     lines.forEach(line => {
-        // Create gradient for each line
-        const gradient = ctx.createLinearGradient(line.x, line.y, line.x, line.y + line.length);
-        gradient.addColorStop(0, lineColor.replace(/[\d.]+\)$/, '0)'));
-        gradient.addColorStop(0.5, lineColor);
-        gradient.addColorStop(1, lineColor.replace(/[\d.]+\)$/, '0)'));
+        const color = isLight 
+            ? `rgba(37, 99, 235, ${line.opacity * 0.6})` 
+            : `rgba(96, 165, 250, ${line.opacity})`;
         
         ctx.beginPath();
-        ctx.strokeStyle = gradient;
+        ctx.strokeStyle = color;
         ctx.lineWidth = line.width;
+        ctx.lineCap = 'round';
         ctx.moveTo(line.x, line.y);
         ctx.lineTo(line.x, line.y + line.length);
         ctx.stroke();
@@ -67,10 +61,11 @@ function drawLines() {
         line.y += line.speed;
         
         // Reset when line goes off screen
-        if (line.y > canvas.height) {
+        if (line.y > canvas.height + line.length) {
             line.y = -line.length;
             line.x = Math.random() * canvas.width;
-            line.speed = Math.random() * 1.5 + 0.5;
+            line.speed = Math.random() * 2 + 0.8;
+            line.length = Math.random() * 100 + 50;
         }
     });
     
@@ -79,7 +74,7 @@ function drawLines() {
     }
 }
 
-function initFallingLines() {
+function startFallingLines() {
     resizeCanvas();
     createLines();
     drawLines();
@@ -91,18 +86,8 @@ window.addEventListener('resize', () => {
     createLines();
 });
 
-// Handle theme change (update line colors)
-const themeObserver = new MutationObserver(() => {
-    // Colors update automatically on next frame via getLineColor()
-});
-
-themeObserver.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ['data-theme']
-});
-
 // Start the effect
-initFallingLines();
+startFallingLines();
 
 // Pause when page is not visible (performance)
 document.addEventListener('visibilitychange', () => {
@@ -114,6 +99,8 @@ document.addEventListener('visibilitychange', () => {
         drawLines();
     }
 });
+
+console.log('✅ Falling lines effect started');
 
 // ========================================
 // THEME TOGGLE (Dark/Light Mode)

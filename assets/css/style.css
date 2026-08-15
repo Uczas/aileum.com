@@ -1540,28 +1540,15 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: 1;
     pointer-events: none;
-    opacity: 0.4;
-    transition: opacity 0.4s ease;
+    opacity: 0.6;
 }
 
-/* Dark mode */
-:root {
-    --line-color: rgba(37, 99, 235, 0.15);
-    --line-glow: rgba(124, 58, 237, 0.08);
-}
-
-/* Light mode */
-[data-theme="light"] {
-    --line-color: rgba(37, 99, 235, 0.08);
-    --line-glow: rgba(124, 58, 237, 0.05);
-}
-
-/* Ensure all content sections stay above the falling lines */
+/* Ensure content stays above the canvas */
 header,
 section,
 footer {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }

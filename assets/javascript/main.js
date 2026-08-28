@@ -233,48 +233,61 @@ const counterObserver = new IntersectionObserver((entries) => {
 statNumbers.forEach(el => counterObserver.observe(el));
 
 // ========================================
-// CONTACT FORM HANDLING
+// CONTACT FORM HANDLING — FORMSPREE
 // ========================================
 const contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const subject = document.getElementById('subject').value.trim();
-    const message = document.getElementById('message').value.trim();
-    
-    if (!name || !email || !message) {
-        showNotification('Please fill in all required fields.', 'error');
-        return;
-    }
-    
-    // Basic email validation
-    if (!email.includes('@') || !email.includes('.')) {
-        showNotification('Please enter a valid email address.', 'error');
-        return;
-    }
-    
-    // Simulate sending
-    const btn = contactForm.querySelector('.btn-primary');
-    const originalText = btn.innerHTML;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-    btn.disabled = true;
-    
-    setTimeout(() => {
-        btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-        btn.style.background = '#10b981';
-        
-        setTimeout(() => {
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const btn = contactForm.querySelector('.btn-primary');
+        const originalText = btn.innerHTML;
+
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        btn.disabled = true;
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: {
+                    Accept: 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                btn.style.background = '#10b981';
+
+                contactForm.reset();
+
+                showNotification(
+                    "Thank you! We'll get back to you within 24 hours.",
+                    'success'
+                );
+
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                }, 2500);
+            } else {
+                throw new Error('Formspree submission failed');
+            }
+        } catch (error) {
+            console.error('Contact form error:', error);
+
             btn.innerHTML = originalText;
-            btn.style.background = '';
             btn.disabled = false;
-            contactForm.reset();
-            showNotification('Thank you! We\'ll get back to you within 24 hours.', 'success');
-        }, 2500);
-    }, 2000);
-});
+
+            showNotification(
+                'Unable to send your message. Please try again.',
+                'error'
+            );
+        }
+    });
+}
 
 // ========================================
 // NEWSLETTER FORM HANDLING

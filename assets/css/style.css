@@ -1120,6 +1120,7 @@ img {
 /* ========================================
    FOOTER
    ======================================== */
+
 footer {
     padding: 60px 0 30px;
     border-top: 1px solid var(--border-color);
@@ -1190,13 +1191,18 @@ footer {
     margin-bottom: 16px;
 }
 
+/* Newsletter form */
 .footer-newsletter form {
     display: flex;
+    align-items: center;
     gap: 10px;
+    width: 100%;
 }
 
 .footer-newsletter input {
-    flex: 1;
+    flex: 1 1 auto;
+    min-width: 0;
+    width: 100%;
     padding: 12px 16px;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -1216,24 +1222,82 @@ footer {
     color: var(--text-muted);
 }
 
-.footer-newsletter button {
+/* Newsletter submit button */
+.footer-newsletter .newsletter-submit {
+    flex: 0 0 48px;
     width: 48px;
     height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    padding: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     background: var(--gradient-1);
     border: none;
     border-radius: 50%;
     color: #fff;
     font-size: 18px;
+    line-height: 1;
     cursor: pointer;
     transition: var(--transition);
-    flex-shrink: 0;
 }
 
-.footer-newsletter button:hover {
+.footer-newsletter .newsletter-submit i {
+    display: block;
+    margin: 0;
+    line-height: 1;
+}
+
+.footer-newsletter .newsletter-submit:hover {
     transform: scale(1.05);
     box-shadow: var(--shadow-btn);
 }
 
+.footer-newsletter .newsletter-submit:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+}
+
+.footer-newsletter .newsletter-submit:disabled {
+    opacity: 0.65;
+    cursor: wait;
+    transform: none;
+}
+
+.footer-newsletter .newsletter-submit.is-loading i {
+    animation: newsletter-spin 0.8s linear infinite;
+}
+
+@keyframes newsletter-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Newsletter status message */
+#newsletterStatus {
+    min-height: 20px;
+    margin: 8px 0 0;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+#newsletterStatus.success {
+    color: #10b981;
+}
+
+#newsletterStatus.error {
+    color: #ef4444;
+}
+
+/* Footer bottom section */
 .footer-bottom {
     padding-top: 24px;
     border-top: 1px solid var(--border-color);
@@ -1258,6 +1322,47 @@ footer {
 
 .footer-legal a:hover {
     color: var(--text-primary);
+}
+
+/* Responsive footer layout */
+@media (max-width: 900px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+    }
+
+    .footer-brand {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 600px) {
+    footer {
+        padding: 45px 0 25px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .footer-brand {
+        grid-column: span 1;
+    }
+
+    .footer-newsletter form {
+        max-width: 100%;
+    }
+
+    .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .footer-legal {
+        flex-wrap: wrap;
+        gap: 12px 20px;
+    }
 }
 
 /* ========================================

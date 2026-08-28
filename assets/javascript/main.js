@@ -290,31 +290,59 @@ if (contactForm) {
 }
 
 // ========================================
-// NEWSLETTER FORM HANDLING
+// NEWSLETTER FORM HANDLING — FORMSPREE
 // ========================================
-const newsletterForm = document.querySelector('#newsletterForm');
+const newsletterForm = document.getElementById('newsletterForm');
 
-newsletterForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const input = newsletterForm.querySelector('input');
-    const email = input.value.trim();
-    
-    if (!email || !email.includes('@') || !email.includes('.')) {
-        showNotification('Please enter a valid email address.', 'error');
-        return;
-    }
-    
-    const btn = newsletterForm.querySelector('button');
-    btn.innerHTML = '<i class="fas fa-check"></i>';
-    btn.style.background = '#10b981';
-    
-    setTimeout(() => {
-        btn.innerHTML = '<i class="fas fa-arrow-right"></i>';
-        btn.style.background = '';
-        input.value = '';
-        showNotification('Subscribed successfully! Welcome to Aileum.', 'success');
-    }, 2000);
-});
+if (newsletterForm) {
+    newsletterForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const button = newsletterForm.querySelector('button[type="submit"]');
+        const originalText = button.innerHTML;
+
+        button.disabled = true;
+        button.innerHTML = 'Subscribing...';
+
+        try {
+            const response = await fetch(newsletterForm.action, {
+                method: 'POST',
+                body: new FormData(newsletterForm),
+                headers: {
+                    Accept: 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Newsletter submission failed');
+            }
+
+            newsletterForm.reset();
+            button.innerHTML = 'Subscribed!';
+
+            showNotification(
+                'Thank you for subscribing to our newsletter!',
+                'success'
+            );
+
+            setTimeout(() => {
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }, 2500);
+
+        } catch (error) {
+            console.error('Newsletter error:', error);
+
+            button.innerHTML = originalText;
+            button.disabled = false;
+
+            showNotification(
+                'Subscription failed. Please try again.',
+                'error'
+            );
+        }
+    });
+}
 
 // ========================================
 // NOTIFICATION SYSTEM

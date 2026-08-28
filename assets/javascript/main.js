@@ -292,17 +292,31 @@ if (contactForm) {
 // ========================================
 // NEWSLETTER FORM HANDLING — FORMSPREE
 // ========================================
+
 const newsletterForm = document.getElementById('newsletterForm');
 
 if (newsletterForm) {
-    newsletterForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    newsletterForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
 
-        const button = newsletterForm.querySelector('button[type="submit"]');
-        const originalText = button.innerHTML;
+        const button = newsletterForm.querySelector(
+            'button[type="submit"]'
+        );
+
+        const status = document.getElementById('newsletterStatus');
+
+        if (!button) {
+            console.error('Newsletter submit button was not found.');
+            return;
+        }
 
         button.disabled = true;
-        button.innerHTML = 'Subscribing...';
+        button.classList.add('is-loading');
+
+        if (status) {
+            status.textContent = 'Subscribing...';
+            status.className = '';
+        }
 
         try {
             const response = await fetch(newsletterForm.action, {
@@ -318,28 +332,38 @@ if (newsletterForm) {
             }
 
             newsletterForm.reset();
-            button.innerHTML = 'Subscribed!';
 
-            showNotification(
-                'Thank you for subscribing to our newsletter!',
-                'success'
-            );
+            if (status) {
+                status.textContent = 'Successfully subscribed!';
+                status.className = 'success';
+            }
 
-            setTimeout(() => {
-                button.innerHTML = originalText;
-                button.disabled = false;
-            }, 2500);
+            if (typeof showNotification === 'function') {
+                showNotification(
+                    'Thank you for subscribing to our newsletter!',
+                    'success'
+                );
+            }
 
         } catch (error) {
             console.error('Newsletter error:', error);
 
-            button.innerHTML = originalText;
-            button.disabled = false;
+            if (status) {
+                status.textContent =
+                    'Subscription failed. Please try again.';
+                status.className = 'error';
+            }
 
-            showNotification(
-                'Subscription failed. Please try again.',
-                'error'
-            );
+            if (typeof showNotification === 'function') {
+                showNotification(
+                    'Subscription failed. Please try again.',
+                    'error'
+                );
+            }
+
+        } finally {
+            button.disabled = false;
+            button.classList.remove('is-loading');
         }
     });
 }

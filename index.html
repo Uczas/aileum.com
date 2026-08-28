@@ -503,27 +503,24 @@
                     <h4>Stay Updated</h4>
                     <p>Subscribe for tech insights and updates</p>
                     
-                    <form
-                            id="newsletterForm"
-                            action="https://formspree.io/f/mnpqqwyp"
-                            method="POST"
-                        >
+                    <form id="newsletterForm">
                             <input
                                 type="email"
                                 name="email"
-                                placeholder="Enter your email address"
+                                placeholder="Your email address"
                                 required
-                            />
+                            >
                         
-                           <button
-                                    type="submit"
-                                    class="newsletter-submit"
-                                    aria-label="Subscribe"
-                                >
-                                    <i class="fas fa-arrow-right"></i>
+                            <button
+                                type="submit"
+                                class="newsletter-submit"
+                                aria-label="Subscribe"
+                            >
+                                <i class="fas fa-arrow-right"></i>
                             </button>
-
                     </form>
+                    
+                    <p id="newsletterStatus" aria-live="polite"></p>
 
                 </div>
             </div>

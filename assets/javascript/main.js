@@ -233,148 +233,186 @@ const counterObserver = new IntersectionObserver((entries) => {
 statNumbers.forEach(el => counterObserver.observe(el));
 
 // ========================================
-// AUTOMATIC TESTIMONIAL SLIDER
+// TESTIMONIAL SLIDER
+// Manual drag, wheel, touch, keyboard + auto-scroll
 // ========================================
-const testimonialsScroll = document.getElementById('testimonialsScroll');
-const testimonialPause = document.getElementById('testimonialPause');
+const testimonialsScroll =
+    document.getElementById('testimonialsScroll');
 
 if (testimonialsScroll) {
-    let testimonialTimer;
-    let isPaused = false;
-    let isInteracting = false;
+    const cards =
+        testimonialsScroll.querySelectorAll('.testimonial-card');
 
-    const getTestimonialScrollAmount = () => {
-        const card = testimonialsScroll.querySelector('.testimonial-card');
+    let testimonialTimer;
+    let interactionTimer;
+    let isDragging = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+
+    const reducedMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    const getScrollAmount = () => {
+        const card = testimonialsScroll.querySelector(
+            '.testimonial-card'
+        );
 
         if (!card) return 0;
 
-        const trackStyles = window.getComputedStyle(testimonialsScroll);
-        const gap =
-            parseFloat(trackStyles.columnGap || trackStyles.gap) || 0;
+        const styles = getComputedStyle(testimonialsScroll);
+        const gap = parseFloat(styles.columnGap || styles.gap) || 0;
 
         return card.offsetWidth + gap;
     };
 
-    const moveToNextTestimonial = () => {
-        if (isPaused || isInteracting) return;
+    const pauseTemporarily = () => {
+        clearInterval(testimonialTimer);
+        clearTimeout(interactionTimer);
 
-        const scrollAmount = getTestimonialScrollAmount();
+        interactionTimer = setTimeout(() => {
+            startAutomaticScroll();
+        }, 5000);
+    };
+
+    const moveToNextCard = () => {
+        const amount = getScrollAmount();
         const maxScroll =
             testimonialsScroll.scrollWidth -
             testimonialsScroll.clientWidth;
 
-        if (!scrollAmount || maxScroll <= 0) return;
+        if (!amount || maxScroll <= 0) return;
 
         const nextPosition =
-            testimonialsScroll.scrollLeft + scrollAmount;
+            testimonialsScroll.scrollLeft + amount;
 
-        if (nextPosition >= maxScroll - 5) {
+        if (nextPosition >= maxScroll - 8) {
             testimonialsScroll.scrollTo({
                 left: 0,
-                behavior: 'smooth'
+                behavior: reducedMotion ? 'auto' : 'smooth'
             });
         } else {
-            testimonialsScroll.scrollTo({
-                left: nextPosition,
-                behavior: 'smooth'
+            testimonialsScroll.scrollBy({
+                left: amount,
+                behavior: reducedMotion ? 'auto' : 'smooth'
             });
         }
     };
 
-    const startTestimonialTimer = () => {
+    const startAutomaticScroll = () => {
         clearInterval(testimonialTimer);
 
-        if (!isPaused && !isInteracting) {
+        if (!reducedMotion && !document.hidden) {
             testimonialTimer = setInterval(
-                moveToNextTestimonial,
+                moveToNextCard,
                 4500
             );
         }
     };
 
-    const stopTestimonialTimer = () => {
-        clearInterval(testimonialTimer);
+    // Convert vertical mouse-wheel movement into horizontal scrolling
+    testimonialsScroll.addEventListener(
+        'wheel',
+        (event) => {
+            if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+                event.preventDefault();
+                testimonialsScroll.scrollLeft += event.deltaY;
+            }
+
+            pauseTemporarily();
+        },
+        { passive: false }
+    );
+
+    // Desktop click-and-drag support
+    testimonialsScroll.addEventListener('pointerdown', (event) => {
+        isDragging = true;
+        startX = event.clientX;
+        startScrollLeft = testimonialsScroll.scrollLeft;
+
+        testimonialsScroll.setPointerCapture(event.pointerId);
+        testimonialsScroll.classList.add('is-dragging');
+        pauseTemporarily();
+    });
+
+    testimonialsScroll.addEventListener('pointermove', (event) => {
+        if (!isDragging) return;
+
+        event.preventDefault();
+
+        const distance = event.clientX - startX;
+        testimonialsScroll.scrollLeft =
+            startScrollLeft - distance;
+    });
+
+    const stopDragging = () => {
+        isDragging = false;
+        testimonialsScroll.classList.remove('is-dragging');
+        startAutomaticScroll();
     };
 
-    // Pause while hovering
-    testimonialsScroll.addEventListener('mouseenter', () => {
-        isInteracting = true;
-        stopTestimonialTimer();
-    });
+    testimonialsScroll.addEventListener(
+        'pointerup',
+        stopDragging
+    );
 
-    testimonialsScroll.addEventListener('mouseleave', () => {
-        isInteracting = false;
-        startTestimonialTimer();
-    });
+    testimonialsScroll.addEventListener(
+        'pointercancel',
+        stopDragging
+    );
 
-    // Pause while touching or swiping
-    testimonialsScroll.addEventListener('touchstart', () => {
-        isInteracting = true;
-        stopTestimonialTimer();
-    }, { passive: true });
+    testimonialsScroll.addEventListener(
+        'pointerleave',
+        () => {
+            if (isDragging) stopDragging();
+        }
+    );
 
-    testimonialsScroll.addEventListener('touchend', () => {
-        isInteracting = false;
-        startTestimonialTimer();
-    }, { passive: true });
+    // Keyboard navigation
+    testimonialsScroll.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            testimonialsScroll.scrollBy({
+                left: getScrollAmount(),
+                behavior: 'smooth'
+            });
+            pauseTemporarily();
+        }
 
-    // Pause when focused with the keyboard
-    testimonialsScroll.addEventListener('focusin', () => {
-        isInteracting = true;
-        stopTestimonialTimer();
-    });
-
-    testimonialsScroll.addEventListener('focusout', () => {
-        isInteracting = false;
-        startTestimonialTimer();
-    });
-
-    // Pause/play button
-    if (testimonialPause) {
-        testimonialPause.addEventListener('click', () => {
-            isPaused = !isPaused;
-
-            testimonialPause.setAttribute(
-                'aria-pressed',
-                String(isPaused)
-            );
-
-            testimonialPause.innerHTML = isPaused
-                ? '<i class="fas fa-play" aria-hidden="true"></i><span>Play</span>'
-                : '<i class="fas fa-pause" aria-hidden="true"></i><span>Pause</span>';
-
-            testimonialPause.setAttribute(
-                'aria-label',
-                isPaused
-                    ? 'Play automatic testimonial scrolling'
-                    : 'Pause automatic testimonial scrolling'
-            );
-
-            if (isPaused) {
-                stopTestimonialTimer();
-            } else {
-                startTestimonialTimer();
-            }
-        });
-    }
-
-    // Stop animation when the tab is hidden
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            stopTestimonialTimer();
-        } else {
-            startTestimonialTimer();
+        if (event.key === 'ArrowLeft') {
+            event.preventDefault();
+            testimonialsScroll.scrollBy({
+                left: -getScrollAmount(),
+                behavior: 'smooth'
+            });
+            pauseTemporarily();
         }
     });
 
-    // Respect reduced-motion preferences
-    const prefersReducedMotion = window.matchMedia(
-        '(prefers-reduced-motion: reduce)'
-    );
+    // Pause while hovering, resume after leaving
+    testimonialsScroll.addEventListener('mouseenter', () => {
+        clearInterval(testimonialTimer);
+    });
 
-    if (!prefersReducedMotion.matches) {
-        startTestimonialTimer();
-    }
+    testimonialsScroll.addEventListener('mouseleave', () => {
+        startAutomaticScroll();
+    });
+
+    // Pause when the page is not visible
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            clearInterval(testimonialTimer);
+        } else {
+            startAutomaticScroll();
+        }
+    });
+
+    // Prevent accidental text selection while dragging
+    testimonialsScroll.addEventListener('dragstart', (event) => {
+        event.preventDefault();
+    });
+
+    startAutomaticScroll();
 }
 
 // ========================================

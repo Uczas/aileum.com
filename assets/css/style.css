@@ -1833,3 +1833,44 @@ footer {
         min-height: auto;
     }
 }
+
+.testimonial-slider-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+.testimonial-pause {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.testimonial-pause:hover,
+.testimonial-pause:focus-visible {
+    background: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+}
+
+.testimonial-scroll-hint {
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .testimonial-slider-controls {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+

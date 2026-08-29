@@ -4,10 +4,11 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.getElementById('navbar');
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
 
-    // Navbar background on scroll
+    // ========================================
+    // NAVBAR BACKGROUND ON SCROLL
+    // ========================================
+
     if (navbar) {
         const updateNavbar = () => {
             navbar.classList.toggle('scrolled', window.scrollY > 40);
@@ -17,30 +18,17 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('scroll', updateNavbar);
     }
 
-    // Mobile menu
-    if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
-            const isOpen = navLinks.classList.toggle('open');
+    // ========================================
+    // SMOOTH SCROLLING FOR LOCAL EVENT LINKS
+    // ========================================
 
-            hamburger.classList.toggle('active', isOpen);
-            hamburger.setAttribute('aria-expanded', String(isOpen));
-        });
-
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('open');
-                hamburger.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', 'false');
-            });
-        });
-    }
-
-    // Smooth scrolling for local event-page links
     document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', event => {
             const targetId = link.getAttribute('href');
 
-            if (!targetId || targetId === '#') return;
+            if (!targetId || targetId === '#') {
+                return;
+            }
 
             const target = document.querySelector(targetId);
 
@@ -55,18 +43,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Prevent empty demo forms from navigating away
-    const subscribeForm = document.querySelector('.events-subscribe-form');
+    // ========================================
+    // EVENTS SUBSCRIPTION FORM
+    // ========================================
+
+    const subscribeForm = document.querySelector(
+        '.events-subscribe-form'
+    );
 
     if (subscribeForm) {
         subscribeForm.addEventListener('submit', event => {
-            const button = subscribeForm.querySelector('button');
+            event.preventDefault();
 
-            if (button) {
-                button.disabled = true;
-                button.innerHTML =
-                    '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            const button = subscribeForm.querySelector(
+                'button[type="submit"]'
+            );
+
+            if (!button || button.disabled) {
+                return;
             }
+
+            const originalButtonContent = button.innerHTML;
+
+            button.disabled = true;
+            button.innerHTML =
+                '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Submitting...';
+
+            // Replace this simulated timeout with your actual form submission
+            setTimeout(() => {
+                button.disabled = false;
+                button.innerHTML = originalButtonContent;
+            }, 1500);
         });
     }
 });

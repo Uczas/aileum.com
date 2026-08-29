@@ -46,55 +46,93 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Navigation -->
-    <header id="navbar">
-        <nav class="container">
-            <a href="index.html" class="logo" aria-label="Aileum Technologies home">
-                <img src="images/aileum.png" alt="Aileum Technologies logo" />
-                <span>AILEUM</span>
+   <!-- Navigation -->
+<header id="navbar">
+    <nav class="container" aria-label="Main navigation">
+
+        <!-- Logo -->
+        <a
+            href="index.html"
+            class="logo"
+            aria-label="Aileum Technologies home"
+        >
+            <img
+                src="images/aileum.png"
+                alt="Aileum Technologies logo"
+            />
+            <span>AILEUM</span>
+        </a>
+
+        <!-- Navigation Links -->
+        <ul class="nav-links" id="navLinks">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a href="index.html#services">Services</a>
+            </li>
+            <li>
+                <a href="index.html#about">About</a>
+            </li>
+            <li>
+                <a href="index.html#team">Team</a>
+            </li>
+            <li>
+                <a href="index.html#portfolio">Portfolio</a>
+            </li>
+            <li>
+                <a
+                    href="events.html"
+                    class="active"
+                    aria-current="page"
+                >
+                    Events
+                </a>
+            </li>
+            <li>
+                <a href="index.html#contact">Contact</a>
+            </li>
+        </ul>
+
+        <!-- Navigation Actions -->
+        <div class="nav-actions">
+
+            <!-- Theme Toggle -->
+            <button
+                class="theme-toggle"
+                id="themeToggle"
+                type="button"
+                aria-label="Toggle dark and light theme"
+            >
+                <i class="fas fa-moon" aria-hidden="true"></i>
+                <i class="fas fa-sun" aria-hidden="true"></i>
+            </button>
+
+            <!-- Desktop CTA -->
+            <a
+                href="#opportunities"
+                class="btn-primary btn-sm nav-cta"
+            >
+                Explore Events
             </a>
 
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#team">Team</a></li>
-                <li><a href="index.html#portfolio">Portfolio</a></li>
-                <li><a href="events.html" class="active">Events</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
+            <!-- Mobile Menu Button -->
+            <button
+                class="hamburger"
+                id="hamburger"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-controls="navLinks"
+                aria-expanded="false"
+            >
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
 
-            <div class="nav-actions">
-                <button
-                    class="theme-toggle"
-                    id="themeToggle"
-                    aria-label="Toggle theme"
-                    type="button"
-                >
-                    <i class="fas fa-moon"></i>
-                    <i class="fas fa-sun"></i>
-                </button>
-
-                <a href="#opportunities" class="btn-primary btn-sm">
-                    Explore Events
-                </a>
-
-                <button
-                        class="hamburger"
-                        id="hamburger"
-                        type="button"
-                        aria-label="Toggle navigation menu"
-                        aria-controls="navLinks"
-                        aria-expanded="false"
-                    >
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                </button>
-
-            </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+</header>
 
     <main>
 

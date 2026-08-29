@@ -80,112 +80,142 @@
                 </a>
 
                 <button
-                    class="hamburger"
-                    id="hamburger"
-                    aria-label="Open navigation menu"
-                    aria-expanded="false"
-                    type="button"
-                >
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                        class="hamburger"
+                        id="hamburger"
+                        type="button"
+                        aria-label="Toggle navigation menu"
+                        aria-controls="navLinks"
+                        aria-expanded="false"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
                 </button>
+
             </div>
         </nav>
     </header>
 
     <main>
 
-        <!-- Events hero -->
-        <section class="events-hero">
-            <div class="container">
-                <div class="events-hero-grid">
+       <!-- Events hero -->
+<section class="events-hero" id="events-hero">
+    <div class="container">
+        <div class="events-hero-grid">
 
-                    <div class="events-hero-content" data-aos="fade-up">
-                        <span class="section-tag">
-                            <i class="fas fa-calendar-days"></i>
-                            Aileum Events & Opportunities
-                        </span>
+            <!-- Hero content -->
+            <div class="events-hero-content" data-aos="fade-up">
 
-                        <h1>
-                            Learn. Connect.
-                            <span class="gradient-text">Grow.</span>
-                        </h1>
+                <span class="section-tag">
+                    <i class="fas fa-calendar-days"></i>
+                    Aileum Events &amp; Opportunities
+                </span>
 
-                        <p>
-                            Discover upcoming webinars, career opportunities,
-                            internships and practical insights designed to help
-                            you build confidence and grow with technology.
-                        </p>
+                <h1>
+                    Learn. Connect.
+                    <span class="gradient-text">Grow.</span>
+                </h1>
 
-                        <div class="events-hero-actions">
-                            <a href="#upcoming-events" class="btn-primary">
-                                <i class="fas fa-calendar-check"></i>
-                                View Upcoming Events
-                            </a>
+                <p>
+                    Discover upcoming webinars, career opportunities,
+                    internships and practical insights designed to help
+                    you build confidence and grow with technology.
+                </p>
 
-                            <a href="#opportunities" class="btn-secondary">
-                                <i class="fas fa-arrow-down"></i>
-                                Explore Opportunities
-                            </a>
-                        </div>
+                <div class="events-hero-actions">
+                    <a href="#upcoming-events" class="btn-primary">
+                        <i class="fas fa-calendar-check"></i>
+                        View Upcoming Events
+                    </a>
 
-                        <div class="events-hero-stats">
-                            <div>
-                                <strong>04</strong>
-                                <span>Event Categories</span>
-                            </div>
+                    <a href="#opportunities" class="btn-secondary">
+                        <i class="fas fa-arrow-down"></i>
+                        Explore Opportunities
+                    </a>
+                </div>
 
-                            <div>
-                                <strong>01</strong>
-                                <span>Growing Community</span>
-                            </div>
-
-                            <div>
-                                <strong>∞</strong>
-                                <span>Learning Possibilities</span>
-                            </div>
-                        </div>
+                <div class="events-hero-stats" aria-label="Events statistics">
+                    <div class="event-stat">
+                        <strong>04</strong>
+                        <span>Event Categories</span>
                     </div>
 
-                    <div class="events-hero-visual" data-aos="fade-left">
-                        <div class="events-orbit orbit-one"></div>
-                        <div class="events-orbit orbit-two"></div>
-
-                        <div class="events-calendar-card">
-                            <div class="calendar-top">
-                                <span>UPCOMING</span>
-                                <i class="fas fa-arrow-up-right-from-square"></i>
-                            </div>
-
-                            <div class="calendar-date">
-                                <strong>01</strong>
-                                <span>EVENTS<br />HUB</span>
-                            </div>
-
-                            <div class="calendar-divider"></div>
-
-                            <div class="calendar-event">
-                                <i class="fas fa-video"></i>
-                                <div>
-                                    <strong>Webinar Series</strong>
-                                    <span>Technology, data and career growth</span>
-                                </div>
-                            </div>
-
-                            <div class="calendar-event">
-                                <i class="fas fa-briefcase"></i>
-                                <div>
-                                    <strong>Career Opportunities</strong>
-                                    <span>Internships and professional pathways</span>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="event-stat">
+                        <strong>01</strong>
+                        <span>Growing Community</span>
                     </div>
 
+                    <div class="event-stat">
+                        <strong aria-label="Unlimited">∞</strong>
+                        <span>Learning Possibilities</span>
+                    </div>
                 </div>
             </div>
-        </section>
+
+            <!-- Hero visual -->
+            <div class="events-hero-visual" data-aos="fade-left">
+
+                <div class="events-orbit orbit-one" aria-hidden="true"></div>
+                <div class="events-orbit orbit-two" aria-hidden="true"></div>
+
+                <div
+                    class="events-calendar-card"
+                    role="img"
+                    aria-label="Upcoming Aileum webinars and career opportunities"
+                >
+                    <!-- Decorative gradient layer -->
+                    <div class="calendar-image-overlay" aria-hidden="true"></div>
+
+                    <div class="calendar-card-content">
+
+                        <div class="calendar-top">
+                            <span>UPCOMING</span>
+                            <i
+                                class="fas fa-arrow-up-right-from-square"
+                                aria-hidden="true"
+                            ></i>
+                        </div>
+
+                        <div class="calendar-date">
+                            <strong>01</strong>
+                            <span>
+                                EVENTS<br>
+                                HUB
+                            </span>
+                        </div>
+
+                        <div class="calendar-divider"></div>
+
+                        <div class="calendar-event">
+                            <i class="fas fa-video" aria-hidden="true"></i>
+
+                            <div>
+                                <strong>Webinar Series</strong>
+                                <span>
+                                    Technology, data and career growth
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="calendar-event">
+                            <i class="fas fa-briefcase" aria-hidden="true"></i>
+
+                            <div>
+                                <strong>Career Opportunities</strong>
+                                <span>
+                                    Internships and professional pathways
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
 
         <!-- Category navigation -->
         <section class="event-categories">

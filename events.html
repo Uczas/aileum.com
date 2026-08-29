@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+        name="description"
+        content="Aileum Technologies Events – Webinars, internships, insights and career growth opportunities."
+    />
+
+    <title>Events | Aileum Technologies</title>
+
+    <link rel="icon" type="image/png" href="images/aileum.png" />
+
+    <!-- Existing site fonts and libraries -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    />
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <link
+        href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+        rel="stylesheet"
+    />
+
+    <!-- Your existing stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <!-- Events-specific stylesheet -->
+    <link rel="stylesheet" href="assets/css/events.css" />
+</head>
+
+<body>
+
+    <!-- Falling lines background -->
+    <canvas id="fallingLines"></canvas>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header id="navbar">
+        <nav class="container">
+            <a href="index.html" class="logo" aria-label="Aileum Technologies home">
+                <img src="images/aileum.png" alt="Aileum Technologies logo" />
+                <span>AILEUM</span>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#team">Team</a></li>
+                <li><a href="index.html#portfolio">Portfolio</a></li>
+                <li><a href="events.html" class="active">Events</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button
+                    class="theme-toggle"
+                    id="themeToggle"
+                    aria-label="Toggle theme"
+                    type="button"
+                >
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+
+                <a href="#opportunities" class="btn-primary btn-sm">
+                    Explore Events
+                </a>
+
+                <button
+                    class="hamburger"
+                    id="hamburger"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    type="button"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Events hero -->
+        <section class="events-hero">
+            <div class="container">
+                <div class="events-hero-grid">
+
+                    <div class="events-hero-content" data-aos="fade-up">
+                        <span class="section-tag">
+                            <i class="fas fa-calendar-days"></i>
+                            Aileum Events & Opportunities
+                        </span>
+
+                        <h1>
+                            Learn. Connect.
+                            <span class="gradient-text">Grow.</span>
+                        </h1>
+
+                        <p>
+                            Discover upcoming webinars, career opportunities,
+                            internships and practical insights designed to help
+                            you build confidence and grow with technology.
+                        </p>
+
+                        <div class="events-hero-actions">
+                            <a href="#upcoming-events" class="btn-primary">
+                                <i class="fas fa-calendar-check"></i>
+                                View Upcoming Events
+                            </a>
+
+                            <a href="#opportunities" class="btn-secondary">
+                                <i class="fas fa-arrow-down"></i>
+                                Explore Opportunities
+                            </a>
+                        </div>
+
+                        <div class="events-hero-stats">
+                            <div>
+                                <strong>04</strong>
+                                <span>Event Categories</span>
+                            </div>
+
+                            <div>
+                                <strong>01</strong>
+                                <span>Growing Community</span>
+                            </div>
+
+                            <div>
+                                <strong>∞</strong>
+                                <span>Learning Possibilities</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="events-hero-visual" data-aos="fade-left">
+                        <div class="events-orbit orbit-one"></div>
+                        <div class="events-orbit orbit-two"></div>
+
+                        <div class="events-calendar-card">
+                            <div class="calendar-top">
+                                <span>UPCOMING</span>
+                                <i class="fas fa-arrow-up-right-from-square"></i>
+                            </div>
+
+                            <div class="calendar-date">
+                                <strong>01</strong>
+                                <span>EVENTS<br />HUB</span>
+                            </div>
+
+                            <div class="calendar-divider"></div>
+
+                            <div class="calendar-event">
+                                <i class="fas fa-video"></i>
+                                <div>
+                                    <strong>Webinar Series</strong>
+                                    <span>Technology, data and career growth</span>
+                                </div>
+                            </div>
+
+                            <div class="calendar-event">
+                                <i class="fas fa-briefcase"></i>
+                                <div>
+                                    <strong>Career Opportunities</strong>
+                                    <span>Internships and professional pathways</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Category navigation -->
+        <section class="event-categories">
+            <div class="container">
+                <div class="category-grid">
+                    <a href="#webinars" class="category-card" data-aos="fade-up">
+                        <span class="category-icon blue">
+                            <i class="fas fa-video"></i>
+                        </span>
+                        <span>
+                            <strong>Webinars</strong>
+                            <small>Learn from experts</small>
+                        </span>
+                        <i class="fas fa-arrow-right category-arrow"></i>
+                    </a>
+
+                    <a href="#internships" class="category-card" data-aos="fade-up" data-aos-delay="100">
+                        <span class="category-icon purple">
+                            <i class="fas fa-user-graduate"></i>
+                        </span>
+                        <span>
+                            <strong>Internships</strong>
+                            <small>Build practical experience</small>
+                        </span>
+                        <i class="fas fa-arrow-right category-arrow"></i>
+                    </a>
+
+                    <a href="#insights" class="category-card" data-aos="fade-up" data-aos-delay="200">
+                        <span class="category-icon green">
+                            <i class="fas fa-lightbulb"></i>
+                        </span>
+                        <span>
+                            <strong>Insights</strong>
+                            <small>Ideas that move you forward</small>
+                        </span>
+                        <i class="fas fa-arrow-right category-arrow"></i>
+                    </a>
+
+                    <a href="#career-growth" class="category-card" data-aos="fade-up" data-aos-delay="300">
+                        <span class="category-icon orange">
+                            <i class="fas fa-chart-line"></i>
+                        </span>
+                        <span>
+                            <strong>Career Growth</strong>
+                            <small>Become future-ready</small>
+                        </span>
+                        <i class="fas fa-arrow-right category-arrow"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured event -->
+        <section class="featured-event" id="upcoming-events">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">Featured Opportunity</span>
+                    <h2>What’s Happening <span class="gradient-text">Next?</span></h2>
+                    <p>
+                        Stay informed about the latest opportunities from Aileum Technologies.
+                    </p>
+                </div>
+
+                <article class="featured-event-card" data-aos="fade-up">
+                    <div class="featured-event-image placeholder-image">
+                        <div>
+                            <i class="fas fa-image"></i>
+                            <span>Featured event image</span>
+                            <small>Replace with your webinar artwork</small>
+                        </div>
+
+                        <span class="featured-label">
+                            <i class="fas fa-star"></i>
+                            Featured
+                        </span>
+                    </div>
+
+                    <div class="featured-event-content">
+                        <div class="event-meta">
+                            <span>
+                                <i class="fas fa-video"></i>
+                                Webinar
+                            </span>
+                            <span>
+                                <i class="fas fa-clock"></i>
+                                90 minutes
+                            </span>
+                        </div>
+
+                        <h3>
+                            The Future of Data, AI and Digital Careers
+                        </h3>
+
+                        <p>
+                            A practical conversation about building relevant
+                            skills, using data effectively and preparing for
+                            opportunities in the digital economy.
+                        </p>
+
+                        <div class="featured-event-details">
+                            <div>
+                                <i class="fas fa-calendar"></i>
+                                <span>
+                                    <small>Date</small>
+                                    To be announced
+                                </span>
+                            </div>
+
+                            <div>
+                                <i class="fas fa-location-dot"></i>
+                                <span>
+                                    <small>Location</small>
+                                    Online
+                                </span>
+                            </div>
+                        </div>
+
+                        <a href="#register" class="btn-primary">
+                            <i class="fas fa-ticket"></i>
+                            Register Interest
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Webinar series -->
+        <section class="events-list-section" id="webinars">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">Webinar Series</span>
+                    <h2>Learn With <span class="gradient-text">Aileum</span></h2>
+                    <p>
+                        Practical sessions covering technology, data, business and career development.
+                    </p>
+                </div>
+
+                <div class="event-card-grid">
+
+                    <article class="event-card" data-aos="fade-up">
+                        <div class="event-card-image placeholder-image">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Webinar artwork</span>
+                        </div>
+
+                        <div class="event-card-body">
+                            <span class="event-type blue-text">
+                                <i class="fas fa-video"></i>
+                                Webinar 01
+                            </span>
+
+                            <h3>Data Skills for the Modern Workplace</h3>
+
+                            <p>
+                                Learn how data literacy can improve decision-making,
+                                productivity and career opportunities.
+                            </p>
+
+                            <div class="event-card-footer">
+                                <span><i class="fas fa-calendar"></i> Coming soon</span>
+                                <a href="#register" aria-label="Learn more about this webinar">
+                                    Learn more <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="event-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="event-card-image placeholder-image purple-placeholder">
+                            <i class="fas fa-robot"></i>
+                            <span>Webinar artwork</span>
+                        </div>
+
+                        <div class="event-card-body">
+                            <span class="event-type purple-text">
+                                <i class="fas fa-video"></i>
+                                Webinar 02
+                            </span>
+
+                            <h3>Introduction to AI and Machine Learning</h3>
+
+                            <p>
+                                Understand the fundamentals of AI and how beginners
+                                can start building practical skills.
+                            </p>
+
+                            <div class="event-card-footer">
+                                <span><i class="fas fa-calendar"></i> Coming soon</span>
+                                <a href="#register" aria-label="Learn more about this webinar">
+                                    Learn more <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="event-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="event-card-image placeholder-image green-placeholder">
+                            <i class="fas fa-laptop-code"></i>
+                            <span>Webinar artwork</span>
+                        </div>
+
+                        <div class="event-card-body">
+                            <span class="event-type green-text">
+                                <i class="fas fa-video"></i>
+                                Webinar 03
+                            </span>
+
+                            <h3>Building Your First Professional Portfolio</h3>
+
+                            <p>
+                                Learn how to present your projects, skills and experience
+                                in a way that attracts meaningful opportunities.
+                            </p>
+
+                            <div class="event-card-footer">
+                                <span><i class="fas fa-calendar"></i> Coming soon</span>
+                                <a href="#register" aria-label="Learn more about this webinar">
+                                    Learn more <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Opportunities -->
+        <section class="opportunities-section" id="opportunities">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">Opportunities</span>
+                    <h2>Find Your Next <span class="gradient-text">Opportunity</span></h2>
+                    <p>
+                        Explore ways to learn, contribute and grow with our community.
+                    </p>
+                </div>
+
+                <div class="opportunity-grid">
+
+                    <article class="opportunity-card" id="internships" data-aos="fade-right">
+                        <div class="opportunity-icon purple">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+
+                        <span class="opportunity-label">Internships</span>
+                        <h3>Start Building Real Experience</h3>
+                        <p>
+                            Gain exposure to real projects, professional workflows
+                            and practical technology skills.
+                        </p>
+
+                        <a href="#register" class="text-link">
+                            Express interest <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </article>
+
+                    <article class="opportunity-card" id="insights" data-aos="fade-up">
+                        <div class="opportunity-icon green">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+
+                        <span class="opportunity-label">Insights</span>
+                        <h3>Ideas for a Changing World</h3>
+                        <p>
+                            Read practical perspectives on technology, business,
+                            data and digital transformation.
+                        </p>
+
+                        <a href="#register" class="text-link">
+                            View insights <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </article>
+
+                    <article class="opportunity-card" id="career-growth" data-aos="fade-left">
+                        <div class="opportunity-icon orange">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+
+                        <span class="opportunity-label">Career Growth</span>
+                        <h3>Become Future-Ready</h3>
+                        <p>
+                            Discover guidance, resources and learning opportunities
+                            that support your professional journey.
+                        </p>
+
+                        <a href="#register" class="text-link">
+                            Grow with us <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration CTA -->
+        <section class="events-cta" id="register">
+            <div class="container">
+                <div class="events-cta-card" data-aos="zoom-in">
+                    <div>
+                        <span class="section-tag">Never Miss an Opportunity</span>
+                        <h2>Stay Connected With <span class="gradient-text">Aileum</span></h2>
+                        <p>
+                            Join our mailing list to receive webinar announcements,
+                            internship openings, insights and career resources.
+                        </p>
+                    </div>
+
+                    <form
+                        class="events-subscribe-form"
+                        action="https://formspree.io/f/mnpqqwyp"
+                        method="POST"
+                    >
+                        <label for="eventsEmail" class="sr-only">
+                            Email address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="eventsEmail"
+                            name="email"
+                            placeholder="Enter your email address"
+                            required
+                        />
+
+                        <button type="submit" class="btn-primary">
+                            Subscribe
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+
+                        <small>
+                            No spam. Only useful updates and opportunities.
+                        </small>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="images/aileum.png" alt="Aileum Technologies" />
+                    <h3>AILEUM</h3>
+                    <p>
+                        Practical tech solutions for data, automation and web design.
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="index.html#services">Services</a>
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#team">Team</a>
+                    <a href="index.html#portfolio">Portfolio</a>
+                    <a href="events.html">Events</a>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Events</h4>
+                    <a href="#webinars">Webinars</a>
+                    <a href="#internships">Internships</a>
+                    <a href="#insights">Insights</a>
+                    <a href="#career-growth">Career Growth</a>
+                </div>
+
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe for events, insights and opportunities.</p>
+
+                    <form
+                        id="newsletterForm"
+                        action="https://formspree.io/f/mnpqqwyp"
+                        method="POST"
+                    >
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Your email address"
+                            required
+                        />
+
+                        <button
+                            type="submit"
+                            class="newsletter-submit"
+                            aria-label="Subscribe"
+                        >
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
+
+                    <p id="newsletterStatus" aria-live="polite"></p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    &copy; 2026 <strong>Aileum Technologies Ltd</strong>.
+                    All rights reserved.
+                </p>
+
+                <p>
+                    <i class="fas fa-certificate"></i>
+                    Registered with CAC Nigeria | RC: 9743407
+                </p>
+
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Existing JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/javascript/main.js"></script>
+
+    <!-- Events-specific JavaScript -->
+    <script src="assets/javascript/events.js"></script>
+</body>
+</html>

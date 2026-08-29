@@ -9,7 +9,6 @@
     align-items: center;
     padding: 150px 0 100px;
     overflow: hidden;
-
     background:
         radial-gradient(
             circle at 15% 25%,
@@ -25,12 +24,12 @@
 }
 
 .events-hero::after {
-    content: '';
+    content: "";
     position: absolute;
+    top: 100px;
+    right: -180px;
     width: 520px;
     height: 520px;
-    right: -180px;
-    top: 100px;
     border: 1px solid rgba(96, 165, 250, 0.15);
     border-radius: 50%;
     box-shadow:
@@ -54,10 +53,11 @@
 .events-hero h1 {
     max-width: 700px;
     margin: 22px 0;
+    color: var(--text-primary);
     font-size: clamp(42px, 6vw, 72px);
+    font-weight: 900;
     line-height: 1.05;
     letter-spacing: -3px;
-    font-weight: 900;
 }
 
 .events-hero-content > p {
@@ -85,6 +85,7 @@
 .events-hero-stats div {
     display: flex;
     flex-direction: column;
+    gap: 4px;
 }
 
 .events-hero-stats strong {
@@ -98,63 +99,145 @@
     font-size: 12px;
 }
 
-/* Hero calendar artwork */
+/* ========================================
+   HERO CALENDAR ARTWORK
+   ======================================== */
 
 .events-hero-visual {
     position: relative;
-    min-height: 500px;
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 500px;
 }
 
 .events-calendar-card {
     position: relative;
     z-index: 2;
     width: min(100%, 430px);
+    min-height: 480px;
     padding: 30px;
-    border: 1px solid rgba(147, 197, 253, 0.3);
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid rgba(147, 197, 253, 0.32);
     border-radius: 28px;
     background:
         linear-gradient(
             145deg,
-            rgba(255, 255, 255, 0.15),
-            rgba(255, 255, 255, 0.045)
-        );
+            rgba(7, 17, 50, 0.68),
+            rgba(42, 20, 87, 0.74)
+        ),
+        url("../images/events/events-placeholder.jpg")
+        center / cover no-repeat;
     box-shadow:
         0 35px 90px rgba(0, 0, 0, 0.35),
-        inset 0 1px 0 rgba(255, 255, 255, 0.16);
+        0 0 55px rgba(96, 165, 250, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     transform: rotate(3deg);
+    transition:
+        transform 0.45s ease,
+        box-shadow 0.45s ease;
+}
+
+.events-calendar-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.2),
+            rgba(255, 255, 255, 0.04)
+        );
+    pointer-events: none;
+}
+
+.events-calendar-card::after {
+    content: "";
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    z-index: -1;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: rgba(96, 165, 250, 0.25);
+    filter: blur(35px);
+    pointer-events: none;
+}
+
+.calendar-image-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(
+            circle at 18% 15%,
+            rgba(96, 165, 250, 0.44),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 86% 82%,
+            rgba(168, 85, 247, 0.42),
+            transparent 36%
+        );
+    mix-blend-mode: screen;
+    pointer-events: none;
+}
+
+.calendar-card-content {
+    position: relative;
+    z-index: 1;
+}
+
+.events-calendar-card:hover {
+    transform: rotate(0deg) translateY(-8px);
+    box-shadow:
+        0 45px 100px rgba(0, 0, 0, 0.42),
+        0 0 70px rgba(96, 165, 250, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 .calendar-top {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    color: #93c5fd;
+    margin-bottom: 42px;
+    color: #bfdbfe;
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 1.5px;
+}
+
+.calendar-top i {
+    font-size: 16px;
 }
 
 .calendar-date {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 18px;
     margin: 38px 0 28px;
 }
 
 .calendar-date strong {
+    color: #ffffff;
     font-size: 110px;
-    line-height: 0.8;
     font-weight: 900;
+    line-height: 0.8;
+    letter-spacing: -7px;
     background: var(--gradient-2);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .calendar-date span {
-    color: var(--text-secondary);
+    padding-bottom: 7px;
+    color: #dbeafe;
     font-size: 14px;
     font-weight: 700;
     line-height: 1.5;
@@ -164,7 +247,11 @@
 .calendar-divider {
     height: 1px;
     margin-bottom: 24px;
-    background: rgba(255, 255, 255, 0.14);
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.02)
+    );
 }
 
 .calendar-event {
@@ -174,15 +261,20 @@
     padding: 16px 0;
 }
 
+.calendar-event + .calendar-event {
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
 .calendar-event i {
-    width: 38px;
-    height: 38px;
     display: flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 11px;
-    color: #fff;
+    color: #ffffff;
     background: var(--gradient-1);
 }
 
@@ -192,14 +284,15 @@
 }
 
 .calendar-event strong {
-    margin-bottom: 3px;
-    color: var(--text-primary);
+    margin-bottom: 5px;
+    color: #ffffff;
     font-size: 14px;
 }
 
 .calendar-event span {
-    color: var(--text-secondary);
+    color: rgba(219, 234, 254, 0.78);
     font-size: 12px;
+    line-height: 1.5;
 }
 
 .events-orbit {
@@ -218,8 +311,64 @@
 .orbit-two {
     width: 360px;
     height: 190px;
-    transform: rotate(48deg);
     border-color: rgba(167, 139, 250, 0.25);
+    transform: rotate(48deg);
+}
+
+/* ========================================
+   LIGHT THEME CALENDAR CARD
+   ======================================== */
+
+[data-theme="light"] .events-calendar-card {
+    border-color: rgba(37, 99, 235, 0.22);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(219, 234, 254, 0.78),
+            rgba(237, 233, 254, 0.82)
+        ),
+        url("../images/events/events-placeholder.jpg")
+        center / cover no-repeat;
+    box-shadow:
+        0 30px 75px rgba(30, 64, 175, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+[data-theme="light"] .calendar-top,
+[data-theme="light"] .calendar-top i,
+[data-theme="light"] .calendar-date span {
+    color: #1d4ed8;
+}
+
+[data-theme="light"] .calendar-date strong {
+    background: linear-gradient(135deg, #1d4ed8, #7c3aed);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .calendar-event strong {
+    color: #172554;
+}
+
+[data-theme="light"] .calendar-event span {
+    color: #475569;
+}
+
+[data-theme="light"] .calendar-event i {
+    color: #ffffff;
+}
+
+[data-theme="light"] .calendar-event + .calendar-event {
+    border-top-color: rgba(30, 64, 175, 0.12);
+}
+
+[data-theme="light"] .calendar-divider {
+    background: linear-gradient(
+        90deg,
+        rgba(37, 99, 235, 0.45),
+        rgba(37, 99, 235, 0)
+    );
 }
 
 /* ========================================
@@ -278,7 +427,7 @@
     justify-content: center;
     flex-shrink: 0;
     border-radius: 14px;
-    color: #fff;
+    color: #ffffff;
 }
 
 .category-icon {
@@ -360,7 +509,7 @@
 }
 
 .placeholder-image::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -401,7 +550,7 @@
     padding: 8px 14px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 30px;
-    color: #fff;
+    color: #ffffff;
     background: rgba(0, 0, 0, 0.25);
     font-size: 11px;
     font-weight: 700;
@@ -500,6 +649,9 @@
 }
 
 .event-card-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 220px;
     flex-direction: column;
     gap: 8px;
@@ -515,13 +667,21 @@
 
 .purple-placeholder {
     background:
-        radial-gradient(circle at 75% 25%, rgba(216, 180, 254, 0.45), transparent 30%),
+        radial-gradient(
+            circle at 75% 25%,
+            rgba(216, 180, 254, 0.45),
+            transparent 30%
+        ),
         linear-gradient(135deg, #25104d, #48145b);
 }
 
 .green-placeholder {
     background:
-        radial-gradient(circle at 25% 25%, rgba(110, 231, 183, 0.35), transparent 30%),
+        radial-gradient(
+            circle at 25% 25%,
+            rgba(110, 231, 183, 0.35),
+            transparent 30%
+        ),
         linear-gradient(135deg, #073b3a, #064e3b);
 }
 
@@ -642,7 +802,7 @@
 }
 
 /* ========================================
-   CTA
+   CALL TO ACTION
    ======================================== */
 
 .events-cta {
@@ -675,6 +835,7 @@
 
 .events-cta-card h2 {
     margin: 16px 0 12px;
+    color: var(--text-primary);
     font-size: clamp(28px, 4vw, 42px);
 }
 
@@ -713,7 +874,10 @@
     font-size: 11px;
 }
 
-/* Accessibility helper */
+/* ========================================
+   ACCESSIBILITY HELPER
+   ======================================== */
+
 .sr-only {
     position: absolute;
     width: 1px;
@@ -740,8 +904,8 @@
     }
 
     .events-hero-content > p {
-        margin-left: auto;
         margin-right: auto;
+        margin-left: auto;
     }
 
     .events-hero-actions,
@@ -800,16 +964,23 @@
     }
 
     .events-hero-stats {
+        justify-content: space-between;
         gap: 18px;
     }
 
     .events-hero-visual {
-        min-height: 360px;
+        min-height: 390px;
     }
 
     .events-calendar-card {
+        width: min(100%, 390px);
+        min-height: 420px;
         padding: 23px;
         transform: none;
+    }
+
+    .events-calendar-card:hover {
+        transform: translateY(-5px);
     }
 
     .calendar-date strong {
@@ -846,5 +1017,28 @@
 
     .events-cta-card {
         padding: 30px 24px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .events-calendar-card,
+    .category-card,
+    .event-card,
+    .opportunity-card,
+    .category-arrow,
+    .event-card-footer a i,
+    .text-link i {
+        transition: none;
+    }
+
+    .events-calendar-card {
+        transform: none;
+    }
+
+    .events-calendar-card:hover,
+    .category-card:hover,
+    .event-card:hover,
+    .opportunity-card:hover {
+        transform: none;
     }
 }

@@ -233,6 +233,151 @@ const counterObserver = new IntersectionObserver((entries) => {
 statNumbers.forEach(el => counterObserver.observe(el));
 
 // ========================================
+// AUTOMATIC TESTIMONIAL SLIDER
+// ========================================
+const testimonialsScroll = document.getElementById('testimonialsScroll');
+const testimonialPause = document.getElementById('testimonialPause');
+
+if (testimonialsScroll) {
+    let testimonialTimer;
+    let isPaused = false;
+    let isInteracting = false;
+
+    const getTestimonialScrollAmount = () => {
+        const card = testimonialsScroll.querySelector('.testimonial-card');
+
+        if (!card) return 0;
+
+        const trackStyles = window.getComputedStyle(testimonialsScroll);
+        const gap =
+            parseFloat(trackStyles.columnGap || trackStyles.gap) || 0;
+
+        return card.offsetWidth + gap;
+    };
+
+    const moveToNextTestimonial = () => {
+        if (isPaused || isInteracting) return;
+
+        const scrollAmount = getTestimonialScrollAmount();
+        const maxScroll =
+            testimonialsScroll.scrollWidth -
+            testimonialsScroll.clientWidth;
+
+        if (!scrollAmount || maxScroll <= 0) return;
+
+        const nextPosition =
+            testimonialsScroll.scrollLeft + scrollAmount;
+
+        if (nextPosition >= maxScroll - 5) {
+            testimonialsScroll.scrollTo({
+                left: 0,
+                behavior: 'smooth'
+            });
+        } else {
+            testimonialsScroll.scrollTo({
+                left: nextPosition,
+                behavior: 'smooth'
+            });
+        }
+    };
+
+    const startTestimonialTimer = () => {
+        clearInterval(testimonialTimer);
+
+        if (!isPaused && !isInteracting) {
+            testimonialTimer = setInterval(
+                moveToNextTestimonial,
+                4500
+            );
+        }
+    };
+
+    const stopTestimonialTimer = () => {
+        clearInterval(testimonialTimer);
+    };
+
+    // Pause while hovering
+    testimonialsScroll.addEventListener('mouseenter', () => {
+        isInteracting = true;
+        stopTestimonialTimer();
+    });
+
+    testimonialsScroll.addEventListener('mouseleave', () => {
+        isInteracting = false;
+        startTestimonialTimer();
+    });
+
+    // Pause while touching or swiping
+    testimonialsScroll.addEventListener('touchstart', () => {
+        isInteracting = true;
+        stopTestimonialTimer();
+    }, { passive: true });
+
+    testimonialsScroll.addEventListener('touchend', () => {
+        isInteracting = false;
+        startTestimonialTimer();
+    }, { passive: true });
+
+    // Pause when focused with the keyboard
+    testimonialsScroll.addEventListener('focusin', () => {
+        isInteracting = true;
+        stopTestimonialTimer();
+    });
+
+    testimonialsScroll.addEventListener('focusout', () => {
+        isInteracting = false;
+        startTestimonialTimer();
+    });
+
+    // Pause/play button
+    if (testimonialPause) {
+        testimonialPause.addEventListener('click', () => {
+            isPaused = !isPaused;
+
+            testimonialPause.setAttribute(
+                'aria-pressed',
+                String(isPaused)
+            );
+
+            testimonialPause.innerHTML = isPaused
+                ? '<i class="fas fa-play" aria-hidden="true"></i><span>Play</span>'
+                : '<i class="fas fa-pause" aria-hidden="true"></i><span>Pause</span>';
+
+            testimonialPause.setAttribute(
+                'aria-label',
+                isPaused
+                    ? 'Play automatic testimonial scrolling'
+                    : 'Pause automatic testimonial scrolling'
+            );
+
+            if (isPaused) {
+                stopTestimonialTimer();
+            } else {
+                startTestimonialTimer();
+            }
+        });
+    }
+
+    // Stop animation when the tab is hidden
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            stopTestimonialTimer();
+        } else {
+            startTestimonialTimer();
+        }
+    });
+
+    // Respect reduced-motion preferences
+    const prefersReducedMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+    );
+
+    if (!prefersReducedMotion.matches) {
+        startTestimonialTimer();
+    }
+}
+
+// ========================================
 // CONTACT FORM HANDLING — FORMSPREE
 // ========================================
 const contactForm = document.getElementById('contactForm');

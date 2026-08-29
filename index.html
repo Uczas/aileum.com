@@ -394,20 +394,27 @@
             </p>
         </div>
 
-        <div class="testimonials-scroll" data-aos="fade-up">
+        <div
+            class="testimonials-scroll"
+            id="testimonialsScroll"
+           ="region"
+            aria-label="Client testimonials"
+            tabindex="0"
+            data-aos="fade-up"
+        >
 
             <!-- Testimonial 1 -->
             <article class="testimonial-card">
                 <div class="testimonial-quote">
-                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-left" aria-hidden="true"></i>
                 </div>
 
                 <div class="testimonial-rating" aria-label="5 out of 5 stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
                 </div>
 
                 <blockquote>
@@ -428,15 +435,15 @@
             <!-- Testimonial 2 -->
             <article class="testimonial-card">
                 <div class="testimonial-quote">
-                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-left" aria-hidden="true"></i>
                 </div>
 
                 <div class="testimonial-rating" aria-label="5 out of 5 stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
                 </div>
 
                 <blockquote>
@@ -457,15 +464,15 @@
             <!-- Testimonial 3 -->
             <article class="testimonial-card">
                 <div class="testimonial-quote">
-                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-left" aria-hidden="true"></i>
                 </div>
 
                 <div class="testimonial-rating" aria-label="5 out of 5 stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
                 </div>
 
                 <blockquote>
@@ -486,15 +493,15 @@
             <!-- Testimonial 4 -->
             <article class="testimonial-card">
                 <div class="testimonial-quote">
-                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-left" aria-hidden="true"></i>
                 </div>
 
                 <div class="testimonial-rating" aria-label="5 out of 5 stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
                 </div>
 
                 <blockquote>
@@ -515,15 +522,15 @@
             <!-- Testimonial 5 -->
             <article class="testimonial-card">
                 <div class="testimonial-quote">
-                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-left" aria-hidden="true"></i>
                 </div>
 
                 <div class="testimonial-rating" aria-label="5 out of 5 stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
                 </div>
 
                 <blockquote>
@@ -543,14 +550,26 @@
 
         </div>
 
-        <p class="testimonial-scroll-hint">
-            <i class="fas fa-arrows-left-right"></i>
-            Scroll horizontally to view more testimonials
-        </p>
+        <div class="testimonial-slider-controls">
+            <button
+                type="button"
+                id="testimonialPause"
+                class="testimonial-pause"
+                aria-label="Pause automatic testimonial scrolling"
+                aria-pressed="false"
+            >
+                <i class="fas fa-pause" aria-hidden="true"></i>
+                <span>Pause</span>
+            </button>
+
+            <p class="testimonial-scroll-hint">
+                <i class="fas fa-arrows-left-right" aria-hidden="true"></i>
+                Swipe or scroll to view more testimonials
+            </p>
+        </div>
 
     </div>
 </section>
-
 
     <!-- ============ CONTACT SECTION ============ -->
     <section id="contact" class="contact">

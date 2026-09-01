@@ -233,86 +233,79 @@ const counterObserver = new IntersectionObserver((entries) => {
 statNumbers.forEach(el => counterObserver.observe(el));
 
 // ========================================
-// ABOUT IMAGE SLIDER - Clean Auto-Play Only
+// ABOUT IMAGE SLIDER - COMPLETE WORKING SOLUTION
 // ========================================
-document.addEventListener('DOMContentLoaded', () => {
-    const sliderTrack = document.querySelector('.slider-track');
-    const slides = document.querySelectorAll('.slide');
-    const sliderContainer = document.querySelector('.slider-container');
+(function() {
+    'use strict';
     
-    if (!sliderTrack || slides.length === 0) return;
-    
-    let currentSlide = 0;
-    let slideInterval;
-    let isTransitioning = false;
-    const totalSlides = slides.length;
-    const intervalTime = 4000; // 4 seconds
-
-    // Function to go to a specific slide
-    const goToSlide = (index) => {
-        if (isTransitioning) return;
-        isTransitioning = true;
-        
-        // Remove active class from all slides
-        slides.forEach(s => s.classList.remove('active'));
-        
-        // Update current slide index
-        currentSlide = (index + totalSlides) % totalSlides;
-        
-        // Move the track - complete slide
-        sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
-        
-        // Add active class to current slide
-        slides[currentSlide].classList.add('active');
-        
-        // Allow transition to complete
-        setTimeout(() => {
-            isTransitioning = false;
-        }, 800);
-    };
-
-    // Go to next slide
-    const nextSlide = () => {
-        if (!isTransitioning) {
-            goToSlide(currentSlide + 1);
-        }
-    };
-
-    // Start automatic sliding
-    const startAutoSlide = () => {
-        clearInterval(slideInterval);
-        slideInterval = setInterval(nextSlide, intervalTime);
-    };
-
-    // Stop automatic sliding
-    const stopAutoSlide = () => {
-        clearInterval(slideInterval);
-    };
-
-    // Pause on hover (optional - for better UX)
-    if (sliderContainer) {
-        sliderContainer.addEventListener('mouseenter', stopAutoSlide);
-        sliderContainer.addEventListener('mouseleave', startAutoSlide);
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSlider);
+    } else {
+        initSlider();
     }
-
-    // Pause when page is not visible (performance)
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            stopAutoSlide();
-        } else {
-            startAutoSlide();
-        }
-    });
-
-    // Ensure track starts at correct position
-    sliderTrack.style.transform = 'translateX(0%)';
     
-    // Initialize the slider
-    slides[0].classList.add('active');
-    startAutoSlide();
-
-    console.log('✅ About slider initialized (clean auto-play with proper sizing)');
-});
+    function initSlider() {
+        const wrapper = document.querySelector('.slider-wrapper');
+        const slides = document.querySelectorAll('.slider-slide');
+        
+        if (!wrapper || slides.length === 0) return;
+        
+        let currentIndex = 0;
+        let intervalId = null;
+        const totalSlides = slides.length;
+        const slideInterval = 4000; // 4 seconds
+        
+        // Function to slide to a specific index
+        function slideTo(index) {
+            if (index < 0) index = totalSlides - 1;
+            if (index >= totalSlides) index = 0;
+            
+            currentIndex = index;
+            const offset = -currentIndex * 100;
+            wrapper.style.transform = 'translateX(' + offset + '%)';
+        }
+        
+        // Function to go to next slide
+        function nextSlide() {
+            slideTo(currentIndex + 1);
+        }
+        
+        // Start autoplay
+        function startAutoplay() {
+            if (intervalId) clearInterval(intervalId);
+            intervalId = setInterval(nextSlide, slideInterval);
+        }
+        
+        // Stop autoplay
+        function stopAutoplay() {
+            if (intervalId) {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+        }
+        
+        // Initialize - show first slide
+        slideTo(0);
+        startAutoplay();
+        
+        // Pause on hover
+        const container = document.querySelector('.slider-container');
+        if (container) {
+            container.addEventListener('mouseenter', stopAutoplay);
+            container.addEventListener('mouseleave', startAutoplay);
+        }
+        
+        // Pause when tab is hidden
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                stopAutoplay();
+            } else {
+                startAutoplay();
+            }
+        });
+    }
+})();
 
 // ========================================
 // TESTIMONIAL SLIDER

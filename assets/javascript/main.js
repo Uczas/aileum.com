@@ -238,32 +238,44 @@ statNumbers.forEach(el => counterObserver.observe(el));
 document.addEventListener('DOMContentLoaded', () => {
     const sliderTrack = document.querySelector('.slider-track');
     const slides = document.querySelectorAll('.slide');
+    const sliderContainer = document.querySelector('.slider-container');
     
     if (!sliderTrack || slides.length === 0) return;
     
     let currentSlide = 0;
     let slideInterval;
+    let isTransitioning = false;
     const totalSlides = slides.length;
     const intervalTime = 4000; // 4 seconds
 
     // Function to go to a specific slide
     const goToSlide = (index) => {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        
         // Remove active class from all slides
         slides.forEach(s => s.classList.remove('active'));
         
         // Update current slide index
         currentSlide = (index + totalSlides) % totalSlides;
         
-        // Move the track
+        // Move the track - complete slide
         sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
         
         // Add active class to current slide
         slides[currentSlide].classList.add('active');
+        
+        // Allow transition to complete
+        setTimeout(() => {
+            isTransitioning = false;
+        }, 800);
     };
 
     // Go to next slide
     const nextSlide = () => {
-        goToSlide(currentSlide + 1);
+        if (!isTransitioning) {
+            goToSlide(currentSlide + 1);
+        }
     };
 
     // Start automatic sliding
@@ -278,7 +290,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Pause on hover (optional - for better UX)
-    const sliderContainer = document.querySelector('.slider-container');
     if (sliderContainer) {
         sliderContainer.addEventListener('mouseenter', stopAutoSlide);
         sliderContainer.addEventListener('mouseleave', startAutoSlide);
@@ -293,11 +304,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Ensure track starts at correct position
+    sliderTrack.style.transform = 'translateX(0%)';
+    
     // Initialize the slider
-    goToSlide(0);
+    slides[0].classList.add('active');
     startAutoSlide();
 
-    console.log('✅ About slider initialized (clean auto-play)');
+    console.log('✅ About slider initialized (clean auto-play with proper sizing)');
 });
 
 // ========================================

@@ -2112,11 +2112,11 @@ footer {
 }
 
 /* ========================================
-   ABOUT SLIDER - Clean Auto-Play with Proper Sizing
+   ABOUT SLIDER - COMPLETE WORKING SOLUTION
    ======================================== */
 .about-slider {
     width: 100%;
-    height: 400px; /* Fixed height for desktop */
+    height: 400px;
     position: relative;
     overflow: hidden;
     border-radius: var(--radius);
@@ -2126,48 +2126,38 @@ footer {
 .slider-container {
     width: 100%;
     height: 100%;
-    position: relative;
     overflow: hidden;
+    position: relative;
 }
 
-.slider-track {
+.slider-wrapper {
     display: flex;
     width: 100%;
     height: 100%;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
+    transition: transform 0.7s ease-in-out;
 }
 
-.slide {
+.slider-slide {
     min-width: 100%;
     height: 100%;
     flex-shrink: 0;
-    position: relative;
-    overflow: hidden;
 }
 
-.slide img {
+.slider-slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
     display: block;
 }
 
-/* Optional: Soft overlay at bottom for better visual */
-.slide::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background: linear-gradient(to top, rgba(0,0,0,0.1), transparent);
-    pointer-events: none;
+/* RESPONSIVE - Desktop to Mobile */
+@media (max-width: 1200px) {
+    .about-slider {
+        height: 380px;
+    }
 }
 
-/* Responsive adjustments for different screen sizes */
-@media (max-width: 1024px) {
+@media (max-width: 992px) {
     .about-slider {
         height: 350px;
     }
@@ -2175,47 +2165,25 @@ footer {
 
 @media (max-width: 768px) {
     .about-slider {
-        height: 300px;
-        border-radius: 12px;
+        height: 320px;
     }
 }
 
 @media (max-width: 576px) {
     .about-slider {
-        height: 250px;
-        border-radius: 10px;
+        height: 280px;
+        border-radius: 12px;
     }
 }
 
 @media (max-width: 400px) {
     .about-slider {
-        height: 200px;
-        border-radius: 8px;
+        height: 220px;
+        border-radius: 10px;
     }
 }
 
-/* Light theme adjustments */
-[data-theme="light"] .slide::after {
-    background: linear-gradient(to top, rgba(0,0,0,0.05), transparent);
-}
-
-/* Subtle zoom animation for elegance */
-.slide img {
-    transition: transform 6s ease;
-}
-
-.slide.active img {
-    animation: gentleZoom 6s ease;
-}
-
-@keyframes gentleZoom {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-    100% {
-        transform: scale(1);
-    }
+/* Light theme */
+[data-theme="light"] .about-slider {
+    background: #f8fafc;
 }

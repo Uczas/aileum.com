@@ -2112,19 +2112,20 @@ footer {
 }
 
 /* ========================================
-   AUTOMATIC LEFT-SLIDING ABOUT IMAGE SLIDER
+   RESPONSIVE LEFT-SLIDING IMAGE SLIDER
    ======================================== */
 
 .about-slider {
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 10;
-    min-height: 280px;
+    height: auto;              /* Overrides height: 400px */
+    aspect-ratio: 16 / 9;      /* Use the ratio of your images */
     overflow: hidden;
     isolation: isolate;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius);
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .about-slides {
@@ -2136,30 +2137,22 @@ footer {
 
 .about-slides img {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
 
     width: 100%;
     height: 100%;
 
-    /*
-     * Shows the complete image without cutting
-     * its edges on smaller screens.
-     */
     object-fit: contain;
     object-position: center;
 
-    /*
-     * Keeps the empty space consistent with the theme.
-     */
-    background: var(--bg-card);
+    background: transparent;
 
     transform: translateX(100%);
     animation: aboutSlideLeft 15s infinite;
     will-change: transform;
 }
 
-/* Three images, five seconds per image */
+/* Five seconds per image */
 .about-slides img:nth-child(1) {
     animation-delay: 0s;
 }
@@ -2172,10 +2165,7 @@ footer {
     animation-delay: 10s;
 }
 
-/*
- * Each image enters from the right,
- * remains visible, then exits to the left.
- */
+/* Slide from right to left */
 @keyframes aboutSlideLeft {
     0% {
         transform: translateX(100%);
@@ -2198,21 +2188,16 @@ footer {
     }
 }
 
-/* Mobile sizing */
+/* Mobile */
 @media (max-width: 768px) {
     .about-slider {
-        aspect-ratio: 16 / 10;
+        width: 100%;
+        aspect-ratio: 16 / 9;
         min-height: 0;
     }
 }
 
-@media (max-width: 480px) {
-    .about-slider {
-        aspect-ratio: 16 / 10;
-    }
-}
-
-/* Respect reduced-motion preferences */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
     .about-slides img {
         animation: none;

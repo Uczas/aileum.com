@@ -1,774 +1,118 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Aileum Technologies Ltd. – Data, Excel Automation & Web Design Services in Nigeria" />
-    <title>Aileum Technologies Ltd. – Data & Software Solutions</title>
-
-<!-- ===== CANONICAL TAG ===== -->
-<link rel="canonical" href="https://aileum.com/" />
-    
-    <!-- ===== FAVICONS & APP ICONS ===== -->
-    <!-- Standard favicon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-    <link rel="shortcut icon" href="favicon.ico" />
-    
-    <!-- Apple Touch Icon (for iOS devices) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-    
-    <!-- Android Chrome icons -->
-    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png" />
-    
-    <!-- Web App Manifest (for PWA support) -->
-    <link rel="manifest" href="site.webmanifest" />
-    
-    <!-- Theme color for mobile browsers -->
-    <meta name="theme-color" content="#08080e" />
-    <meta name="msapplication-TileColor" content="#08080e" />
-    <meta name="msapplication-TileImage" content="android-chrome-192x192.png" />
-    
-    <!-- ===== FONTS & LIBRARIES ===== -->
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    
-    <!-- Font Awesome 6 (Free) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Aileum Technologies builds high-converting websites, delivers decision-ready data analysis, and develops custom machine-learning solutions for organisations and researchers.">
+  <meta name="theme-color" content="#071b3d">
+  <link rel="canonical" href="https://aileum.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <title>Aileum Technologies | Web, Data & Machine Learning Solutions</title>
 </head>
 <body>
-    <!-- ============ FALLING LINES BACKGROUND ============ -->
-<canvas id="fallingLines"></canvas>
-
-    <!-- ============ PRELOADER ============ -->
-    <div id="preloader">
-        <div class="loader"></div>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header" id="top">
+    <div class="container navbar">
+      <a class="logo" href="#top" aria-label="Aileum Technologies home">
+        <img src="images/aileum.png" alt="" onerror="this.hidden=true">
+        <span><strong>AILEUM</strong><small>TECHNOLOGIES LTD.</small></span>
+      </a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span><b class="sr-only">Open menu</b></button>
+      <nav id="main-nav" aria-label="Main navigation">
+        <a href="#services">Services</a><a href="#solutions">Solutions</a><a href="#process">How we work</a><a href="#about">Company</a><a href="#team">Team</a>
+        <a class="nav-cta" href="#contact">Start a project <span>↗</span></a>
+      </nav>
     </div>
+  </header>
 
-    <!-- ============ NAVIGATION ============ -->
-    <header id="navbar">
-        <nav class="container">
-            <div class="logo">
-                <img src="images/aileum.png" alt="Aileum Technologies Logo" />
-                <span>AILEUM</span>
-            </div>
-            
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#team">Team</a></li> 
-                <li><a href="#portfolio">Portfolio</a></li>
-               <!-- <li><a href="events.html" class="active">Events</a></li> -->
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            
-            <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <i class="fas fa-moon"></i>
-                    <i class="fas fa-sun"></i>
-                </button>
-                <a href="#contact" class="btn-primary btn-sm">Get Started</a>
-                <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <!-- ============ HERO SECTION ============ -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="hero-badge">
-                        <i class="fas fa-chart-line"></i> Data, Automation & Web Solutions
-                    </div>
-                    <h1>
-                        Turning Data & <br />
-                        <span class="gradient-text">Ideas into Solutions</span>
-                    </h1>
-                    <p>
-                        Aileum Technologies helps businesses and individuals work smarter through 
-                        Excel automation, Machine Learning models, and clean, professional websites.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#contact" class="btn-primary">
-                            <i class="fas fa-rocket"></i> Start a Project
-                        </a>
-                        <a href="#services" class="btn-secondary">
-                            <i class="fas fa-arrow-right"></i> Explore Services
-                        </a>
-                    </div>
-                    
-                    <!-- Trust indicators -->
-                    <div class="trust-indicators">
-                        <div class="trust-item">
-                            <i class="fas fa-file-excel"></i>
-                            <span>Excel Automation</span>
-                        </div>
-                        <div class="trust-item">
-                            <i class="fas fa-brain"></i>
-                            <span>Machine Learning</span>
-                        </div>
-                        <div class="trust-item">
-                            <i class="fas fa-globe"></i>
-                            <span>Web Design</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="hero-visual" data-aos="fade-left" data-aos-duration="1000">
-                    <div class="floating-cards">
-                        <div class="float-card card-1">
-                            <i class="fas fa-file-excel"></i>
-                            <span>Excel</span>
-                        </div>
-                        <div class="float-card card-2">
-                            <i class="fas fa-brain"></i>
-                            <span>AI/ML</span>
-                        </div>
-                        <div class="float-card card-3">
-                            <i class="fas fa-globe"></i>
-                            <span>Web Design</span>
-                        </div>
-                        <div class="float-card card-4">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Data Analysis</span>
-                        </div>
-                        <div class="float-card card-5">
-                            <i class="fas fa-database"></i>
-                            <span>Data</span>
-                        </div>
-                    </div>
-                    <div class="hero-glow"></div>
-                </div>
-            </div>
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <div class="availability"><i></i> Accepting local &amp; international projects</div>
+          <h1>Your challenge deserves more than an <em>off-the-shelf answer.</em></h1>
+          <p class="hero-lead">Aileum turns business problems, research questions and ambitious ideas into websites people trust, insights leaders can act on, and intelligent software built for the way you work.</p>
+          <div class="hero-actions"><a class="btn btn-primary" href="#contact">Discuss your project <span>↗</span></a><a class="btn btn-link" href="#services">See what we solve <span>↓</span></a></div>
+          <div class="hero-proof"><div><strong>3</strong><span>Connected capabilities</span></div><div><strong>1:1</strong><span>Tailored client approach</span></div><div><strong>RC</strong><span>CAC 9743407</span></div></div>
         </div>
+        <div class="hero-visual reveal">
+          <img src="images/aileum-team-hero.png" alt="African technology professionals collaborating on an analytics solution" width="1792" height="919">
+          <div class="visual-caption"><span>Strategy</span><i></i><span>Design</span><i></i><span>Technology</span></div>
+          <div class="result-card"><small>Our focus</small><strong>Useful solutions.<br>Clear business value.</strong></div>
+        </div>
+      </div>
     </section>
 
-    <!-- ============ SERVICES SECTION ============ -->
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-tag">What We Do</span>
-                <h2>Our <span class="gradient-text">Core Services</span></h2>
-                <p>Focused solutions that deliver immediate value for your business</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-icon">
-                        <i class="fas fa-file-excel"></i>
-                    </div>
-                    <h3>Excel Programming & Automation</h3>
-                    <p>We turn messy spreadsheets into automated, powerful business tools that save you hours of manual work.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Excel Dashboards</li>
-                        <li><i class="fas fa-check"></i> Report Automation</li>
-                        <li><i class="fas fa-check"></i> Data Cleaning & Templates</li>
-                    </ul>
-                </div>
-                
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Machine Learning & Data Analysis</h3>
-                    <p>We build predictive models and analyze your data to help you make smarter business decisions.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Predictive Modeling</li>
-                        <li><i class="fas fa-check"></i> Data Visualization</li>
-                        <li><i class="fas fa-check"></i> Business Insights</li>
-                    </ul>
-                </div>
-                
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3>Website Design</h3>
-                    <p>Clean, responsive, and professional websites for personal brands, small businesses, and portfolios.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Business Websites</li>
-                        <li><i class="fas fa-check"></i> Personal / Portfolio Sites</li>
-                        <li><i class="fas fa-check"></i> Landing Pages</li>
-                    </ul>
-                </div>
-                
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3>Other Tech Services</h3>
-                    <p>We also provide additional software solutions through our trusted network of specialists.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> App Development</li>
-                        <li><i class="fas fa-check"></i> AI Automation</li>
-                        <li><i class="fas fa-check"></i> Graphics Design</li>
-                    </ul>
-                </div>
-            </div>
+    <section class="client-bar" aria-label="Who we serve"><div class="container"><span>Built for</span><p>Businesses</p><i></i><p>Schools</p><i></i><p>NGOs &amp; foundations</p><i></i><p>Researchers</p><i></i><p>Professional brands</p></div></section>
+
+    <section class="section problem-section">
+      <div class="container problem-grid">
+        <div class="section-intro reveal"><p class="eyebrow">Start with the problem</p><h2>What is slowing your growth?</h2><p>Choose the challenge closest to yours. We will help you identify the right solution—even when you are not yet sure what technology you need.</p></div>
+        <div class="problem-list">
+          <a class="problem reveal" href="#contact"><span>01</span><div><h3>“People visit, but they do not enquire.”</h3><p>Clarify your offer and build a faster, more persuasive digital presence.</p></div><b>↗</b></a>
+          <a class="problem reveal" href="#contact"><span>02</span><div><h3>“We have data, but no clear direction.”</h3><p>Turn scattered records into reliable evidence, dashboards and decisions.</p></div><b>↗</b></a>
+          <a class="problem reveal" href="#contact"><span>03</span><div><h3>“Our process needs a smarter system.”</h3><p>Explore a custom predictive model or intelligent workflow built around your operations.</p></div><b>↗</b></a>
         </div>
+      </div>
     </section>
 
-<!-- ============ ABOUT SECTION ============ -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-image about-slider" data-aos="fade-right" aria-label="Aileum Technologies images">
-                    <div class="about-slides">
-                        <img src="images/about-1.png" alt="Aileum Technologies team working" />
-                        <img src="images/about-2.png" alt="Aileum Technologies data solutions" />
-                        <img src="images/about-3.png" alt="Aileum Technologies web development" />
-                    </div>
-                </div>
-
-                <div class="about-content" data-aos="fade-left">
-                    <div class="section-header" style="text-align: left;">
-                        <span class="section-tag">About Us</span>
-                        <h2>Practical Tech, <span class="gradient-text">Real Results</span></h2>
-                    </div>
-                    <p>
-                        Aileum Technologies LTD is a Nigerian-based company focused on helping businesses 
-                        and individuals work smarter through technology.
-                    </p>
-                    <p>
-                        We specialize in Excel automation, Machine Learning, and web design — turning 
-                        everyday data and ideas into practical tools that save time and drive growth.
-                    </p>
-                    <p style="display: flex; align-items: center; gap: 10px; color: var(--text-secondary);">
-                        <i class="fas fa-check-circle" style="color: #10b981; font-size: 18px;">
-                        Duly registered with the Corporate Affairs Commission (CAC), Nigeria — RC: 9743407 </i>
-                    </p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <span class="stat-number" data-count="3">0</span>
-                            <span class="stat-label">Core Services</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number" data-count="100">0</span>
-                            <span class="stat-label">% Commitment</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number" data-count="7">0</span>
-                            <span class="stat-label">Days/Week Support</span>
-                        </div>
-                    </div>
-                    <a href="#contact" class="btn-primary">
-                        <i class="fas fa-handshake"></i> Work With Us
-                    </a>
-                </div>
-            </div>
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="heading-row reveal"><div><p class="eyebrow eyebrow-light">What we do</p><h2>Three capabilities.<br>One growth partner.</h2></div><p>We bring design thinking, analytical rigour and software engineering together—so the solution works as one system, not a collection of disconnected services.</p></div>
+        <div class="service-grid">
+          <article class="service-card reveal"><span class="number">01</span><div class="service-symbol">W</div><h3>Web development &amp; digital presence</h3><p>Strategic websites that communicate your value clearly, build confidence and guide the right visitors toward action.</p><ul><li>Corporate and business websites</li><li>Personal and professional portfolios</li><li>Schools, NGOs and foundation websites</li><li>Campaign, event and landing pages</li><li>Website redesign and conversion optimisation</li></ul><a href="#contact">Build your online presence <span>→</span></a></article>
+          <article class="service-card reveal"><span class="number">02</span><div class="service-symbol">D</div><h3>Data analysis &amp; decision intelligence</h3><p>From raw records to a clear story: we help teams and researchers find patterns, test questions and communicate credible results.</p><ul><li>Business intelligence and dashboards</li><li>Sales, customer and operations analysis</li><li>Statistical and research analysis</li><li>Data cleaning and visualisation</li><li>Excel automation and recurring reports</li></ul><a href="#contact">Turn data into direction <span>→</span></a></article>
+          <article class="service-card reveal"><span class="number">03</span><div class="service-symbol">AI</div><h3>Custom machine-learning solutions</h3><p>Purpose-built models that help organisations forecast, classify, recommend and automate—without forcing a generic product into a unique workflow.</p><ul><li>Demand and sales forecasting</li><li>Customer behaviour and churn models</li><li>Classification and recommendation systems</li><li>Research model development</li><li>Prototyping, evaluation and deployment</li></ul><a href="#contact">Explore an intelligent solution <span>→</span></a></article>
         </div>
+      </div>
     </section>
 
-    
-    <!-- ============ TEAM SECTION ============ -->
-<section id="team" class="team">
-    <div class="container">
-        <div class="section-header" data-aos="fade-up">
-            <span class="section-tag">Our Team</span>
-            <h2>Meet the <span class="gradient-text">Minds Behind Aileum</span></h2>
-            <p>The talented people driving our vision forward</p>
-        </div>
-        
-        <div class="team-grid">
-            <!-- Team Member 1 -->
-            <div class="team-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="team-image">
-                    <img src="images/charles_ugbosu.png" alt="Charles Ugbosu" />
-                    <div class="team-social">
-                        <!-- <a href="https://x.com/your-handle" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a> -->
-                        <a href="https://www.linkedin.com/in/charles-ugbosu-269150221" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/Uczas" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="team-info">
-                    <h3>Charles Ugbosu</h3>
-                    <span class="team-role">AI/ML Engineer</span>
-                    <span class="team-company">Founder & CEO, Aileum Technologies Ltd.</span>
-                </div>
-            </div>
+    <section class="section solutions" id="solutions"><div class="container">
+      <div class="heading-row dark reveal"><div><p class="eyebrow">Solution possibilities</p><h2>Imagine what better<br>could look like.</h2></div><p>These examples show the kinds of outcomes we can design around your organisation. Your solution will be scoped to your actual needs.</p></div>
+      <div class="solution-grid">
+        <article class="solution-card large reveal"><div class="mock website-mock"><div class="browser"><i></i><i></i><i></i></div><div class="mock-nav"></div><div class="mock-title"></div><div class="mock-copy"></div><div class="mock-button"></div><div class="mock-panel"><span></span><span></span><span></span></div></div><div class="solution-copy"><span>Digital growth</span><h3>A website that works like your best business-development person.</h3><p>Clear positioning, compelling service journeys, strong mobile performance and enquiry paths designed around buyer intent.</p></div></article>
+        <article class="solution-card reveal"><div class="mock dashboard-mock"><div class="kpis"><span></span><span></span><span></span></div><div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="line"></div></div><div class="solution-copy"><span>Decision intelligence</span><h3>A live view of the numbers that matter.</h3><p>Replace reporting delays and spreadsheet confusion with focused, decision-ready insight.</p></div></article>
+        <article class="solution-card reveal"><div class="mock model-mock"><div class="nodes"><i></i><i></i><i></i><i></i><i></i><i></i></div><b>92%</b><small>model signal</small></div><div class="solution-copy"><span>Predictive systems</span><h3>A model built around your real operating question.</h3><p>Forecast demand, recognise risk or prioritise opportunities with a transparent modelling process.</p></div></article>
+      </div>
+    </div></section>
 
-            <!-- Team Member 2 -->
-            <div class="team-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="team-image">
-                    <img src="images/gertrude.jpg" alt="Team Member 2" />
-                    <div class="team-social">
-                        <a href="https://x.com/your-handle" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
-                        <a href="https://www.linkedin.com/in/your-handle" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/your-handle" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="team-info">
-                    <h3>Gertrude C. Amamchukwu</h3>
-                    <span class="team-role">Head of Data Science</span>
-                    <span class="team-company">Executive Assistant, Aileum Technologies Ltd.</span>
-                </div>
-            </div>
+    <section class="section process" id="process"><div class="container process-grid">
+      <div class="process-intro reveal"><p class="eyebrow">How we work</p><h2>Customer-centred,<br>from brief to impact.</h2><p>You stay close to the work. We explain decisions plainly, confirm priorities early and design around the people who will use the result.</p><a class="inline-link" href="#contact">Talk through your idea <span>→</span></a></div>
+      <ol class="process-list"><li class="reveal"><b>01</b><div><h3>Listen &amp; diagnose</h3><p>We understand the problem, users, constraints, current process and desired outcome.</p></div></li><li class="reveal"><b>02</b><div><h3>Shape the right solution</h3><p>We define scope, priorities, milestones and the simplest effective technical approach.</p></div></li><li class="reveal"><b>03</b><div><h3>Build with visibility</h3><p>We share progress, gather feedback and validate the work against agreed success measures.</p></div></li><li class="reveal"><b>04</b><div><h3>Launch, transfer &amp; support</h3><p>We deliver clearly, help your team use the solution and support the next stage of growth.</p></div></li></ol>
+    </div></section>
 
-            <!-- Team Member 3 -->
-            <div class="team-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="team-image">
-                    <img src="images/panya.jpg" alt="Team Member 3" />
-                    <div class="team-social">
-                        <a href="https://x.com/IghoLight" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
-                       <!-- <a href="https://x.com/IghoLight" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a> -->
-                        <a href="https://www.instagram.com/igholight123?utm_source=qr&igsh=NTAwOWNvMGNyeWFr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="team-info">
-                    <h3>Akpabokigho L. Panya, PhD</h3>
-                    <!-- <span class="team-role">Data Analyst</span> -->
-                    <span class="team-company">Strategic Advisor, Aileum Technologies Ltd.</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    <section class="section about" id="about"><div class="container about-grid">
+      <div class="about-title reveal"><p class="eyebrow">Our company</p><h2>Built in Nigeria.<br><em>Thinking globally.</em></h2><div class="registered"><i>✓</i><span>Duly registered with Nigeria's Corporate Affairs Commission<br><strong>RC 9743407</strong></span></div></div>
+      <div class="about-content reveal"><p class="lead">Aileum Technologies Ltd. helps individuals and organisations scale through a stronger digital presence, better decisions and intelligent software.</p><p>Our mission is to make professional technology useful and accessible: helping brands earn trust online, helping leaders understand their data, and helping researchers produce rigorous, high-quality work.</p><p>Our vision is to become a leading software company that competes internationally. Over the long term, we are building the capability to create Aileum software products that solve meaningful business and biological problems.</p><div class="principles"><div><span>01</span><strong>Listen deeply</strong><p>We solve the client's problem, not the one we assume they have.</p></div><div><span>02</span><strong>Build responsibly</strong><p>We value clarity, confidentiality and solutions that can be sustained.</p></div><div><span>03</span><strong>Measure value</strong><p>We connect every deliverable to a useful outcome.</p></div></div></div>
+    </div></section>
 
-    <!-- ============ PORTFOLIO SECTION ============ -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-tag">Our Work</span>
-                <h2>What We <span class="gradient-text">Can Build For You</span></h2>
-                <p>Examples of the types of solutions we deliver</p>
-            </div>
-            
-            <div class="portfolio-grid">
-                <div class="portfolio-item" data-aos="flip-up" data-aos-delay="100">
-                    <div class="portfolio-image">
-                        <i class="fas fa-file-excel"></i>
-                    </div>
-                    <div class="portfolio-info">
-                        <h4>Automated Excel Dashboard</h4>
-                        <p>Interactive sales & inventory tracker for a small business</p>
-                        <span class="portfolio-tag">Excel Automation</span>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item" data-aos="flip-up" data-aos-delay="200">
-                    <div class="portfolio-image">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="portfolio-info">
-                        <h4>Sales Prediction Model</h4>
-                        <p>Machine learning model to forecast monthly revenue</p>
-                        <span class="portfolio-tag">Machine Learning</span>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item" data-aos="flip-up" data-aos-delay="300">
-                    <div class="portfolio-image">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <div class="portfolio-info">
-                        <h4>Professional Business Website</h4>
-                        <p>Clean, responsive website for a consulting firm</p>
-                        <span class="portfolio-tag">Web Design</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="section team" id="team"><div class="container">
+      <div class="heading-row dark reveal"><div><p class="eyebrow">Leadership</p><h2>People behind the work.</h2></div><p>A multidisciplinary leadership team spanning machine learning, data science, strategy and research.</p></div>
+      <div class="team-grid">
+        <article class="person reveal"><div class="person-photo"><img src="images/charles_ugbosu.png" alt="Charles Ugbosu" loading="lazy"><span>CU</span></div><div class="person-info"><p>Founder &amp; CEO</p><h3>Charles Ugbosu</h3><span>AI/ML Engineer</span><div><a href="https://www.linkedin.com/in/charles-ugbosu-269150221" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://github.com/Uczas" target="_blank" rel="noopener">GitHub ↗</a></div></div></article>
+        <article class="person reveal"><div class="person-photo yellow"><img src="images/gertrude.jpg" alt="Gertrude C. Amamchukwu" loading="lazy"><span>GA</span></div><div class="person-info"><p>Head of Data Science</p><h3>Gertrude C. Amamchukwu</h3><span>Executive Assistant</span></div></article>
+        <article class="person reveal"><div class="person-photo red"><img src="images/panya.jpg" alt="Akpabokigho L. Panya" loading="lazy"><span>AP</span></div><div class="person-info"><p>Strategic Advisor</p><h3>Akpabokigho L. Panya, PhD</h3><span>Strategy &amp; research</span><div><a href="https://x.com/IghoLight" target="_blank" rel="noopener">X ↗</a><a href="https://www.instagram.com/igholight123" target="_blank" rel="noopener">Instagram ↗</a></div></div></article>
+      </div>
+    </div></section>
 
-    <!-- ========================================
-     TESTIMONIALS SECTION
-     ======================================== -->
-<section class="testimonials" id="testimonials">
-    <div class="container">
+    <section class="section faq"><div class="container faq-grid"><div class="reveal"><p class="eyebrow">Before we begin</p><h2>Common questions.</h2><p>Every project is different, but these are the questions clients most often ask at the start.</p></div><div class="accordion">
+      <details class="reveal"><summary>Can you work with clients outside Nigeria?<span>+</span></summary><p>Yes. Our process supports remote discovery, reviews and delivery, making it practical to work with clients locally and internationally.</p></details>
+      <details class="reveal"><summary>What if I am unsure which service I need?<span>+</span></summary><p>That is completely fine. Describe the problem and the outcome you want. We will help determine whether the best response is a website, analysis, model or a combination.</p></details>
+      <details class="reveal"><summary>Do you provide solutions tailored to our organisation?<span>+</span></summary><p>Yes. Customer-centred delivery is central to our approach. Scope, features and technical choices are based on your users, processes, constraints and priorities.</p></details>
+      <details class="reveal"><summary>How will cost and timeline be determined?<span>+</span></summary><p>After an initial discussion, we define the scope and provide a clear proposal. Cost and timing depend on complexity, content readiness, integrations, data condition and delivery requirements.</p></details>
+    </div></div></section>
 
-        <div class="section-header" data-aos="fade-up">
-            <span class="section-tag">Client Testimonials</span>
+    <section class="contact" id="contact"><div class="container contact-grid">
+      <div class="contact-copy reveal"><p class="eyebrow eyebrow-light">Start a conversation</p><h2>Bring us the problem.<br><em>We will help shape the way forward.</em></h2><p>Tell us what you are trying to achieve. You do not need a technical specification—just a clear description of the challenge.</p><div class="contact-details"><a href="mailto:hello@aileum.com"><small>Email</small><strong>hello@aileum.com</strong><span>↗</span></a><a href="tel:+2349162315141"><small>Phone / WhatsApp</small><strong>+234 916 231 5141</strong><span>↗</span></a><div><small>Based in</small><strong>Delta State, Nigeria</strong></div></div></div>
+      <form class="project-form reveal" action="https://formspree.io/f/xwlkkyrv" method="POST"><div class="form-row"><label>Full name<input type="text" name="name" autocomplete="name" placeholder="Your name" required></label><label>Email address<input type="email" name="email" autocomplete="email" placeholder="you@company.com" required></label></div><div class="form-row"><label>Organisation<input type="text" name="organisation" placeholder="Business or institution"></label><label>Location<input type="text" name="location" placeholder="City, country"></label></div><label>What do you need help with?<select name="service" required><option value="" disabled selected>Select the closest option</option><option>Website and digital presence</option><option>Data analysis or research</option><option>Custom machine learning</option><option>A combination of services</option><option>I am not sure yet</option></select></label><label>Tell us about the challenge<textarea name="message" rows="5" placeholder="What is happening now, and what result would you like to achieve?" required></textarea></label><button class="btn form-submit" type="submit">Send project enquiry <span>↗</span></button><p class="form-status" role="status" aria-live="polite"></p><small>We use your details only to respond to this enquiry.</small></form>
+    </div></section>
+  </main>
 
-            <h2>
-                What Our
-                <span class="gradient-text">Clients Say</span>
-            </h2>
-
-            <p>
-                We help businesses turn ideas into reliable digital solutions
-                that create measurable results.
-            </p>
-        </div>
-
-        <div
-            class="testimonials-scroll"
-            id="testimonialsScroll"
-            role="region"
-            aria-label="Client testimonials"
-            tabindex="0"
-            data-aos="fade-up"
-        >
-
-            <!-- Testimonial 1 -->
-            <article class="testimonial-card">
-                <div class="testimonial-quote" aria-hidden="true">
-                    <i class="fas fa-quote-left"></i>
-                </div>
-
-                <div
-                    class="testimonial-rating"
-                    aria-label="5 out of 5 stars"
-                >
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                </div>
-
-                <blockquote>
-                    “Aileum Technologies transformed our idea into a clean,
-                    professional, and easy-to-use digital platform. Their
-                    communication and attention to detail were excellent.”
-                </blockquote>
-
-                <div class="testimonial-author">
-                    <div
-                        class="testimonial-avatar"
-                        aria-hidden="true"
-                    >
-                        JD
-                    </div>
-
-                    <div>
-                        <h4>James Davidson</h4>
-                        <span>Founder, Nova Business Group</span>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Testimonial 2 -->
-            <article class="testimonial-card">
-                <div class="testimonial-quote" aria-hidden="true">
-                    <i class="fas fa-quote-left"></i>
-                </div>
-
-                <div
-                    class="testimonial-rating"
-                    aria-label="5 out of 5 stars"
-                >
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                </div>
-
-                <blockquote>
-                    “The team understood our requirements from day one and
-                    delivered a solution that exceeded our expectations. We
-                    highly recommend their services.”
-                </blockquote>
-
-                <div class="testimonial-author">
-                    <div
-                        class="testimonial-avatar"
-                        aria-hidden="true"
-                    >
-                        AM
-                    </div>
-
-                    <div>
-                        <h4>Amanda Mitchell</h4>
-                        <span>Operations Director, BrightPath Ltd.</span>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Testimonial 3 -->
-            <article class="testimonial-card">
-                <div class="testimonial-quote" aria-hidden="true">
-                    <i class="fas fa-quote-left"></i>
-                </div>
-
-                <div
-                    class="testimonial-rating"
-                    aria-label="5 out of 5 stars"
-                >
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                </div>
-
-                <blockquote>
-                    “Professional, responsive, and highly skilled. Aileum
-                    helped us improve our online presence and build a stronger
-                    connection with our customers.”
-                </blockquote>
-
-                <div class="testimonial-author">
-                    <div
-                        class="testimonial-avatar"
-                        aria-hidden="true"
-                    >
-                        RK
-                    </div>
-
-                    <div>
-                        <h4>Robert King</h4>
-                        <span>Managing Partner, Elevate Consulting</span>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Testimonial 4 -->
-            <article class="testimonial-card">
-                <div class="testimonial-quote" aria-hidden="true">
-                    <i class="fas fa-quote-left"></i>
-                </div>
-
-                <div
-                    class="testimonial-rating"
-                    aria-label="5 out of 5 stars"
-                >
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                </div>
-
-                <blockquote>
-                    “Working with Aileum was a smooth and enjoyable experience.
-                    They were creative, dependable, and delivered everything
-                    on schedule.”
-                </blockquote>
-
-                <div class="testimonial-author">
-                    <div
-                        class="testimonial-avatar"
-                        aria-hidden="true"
-                    >
-                        SL
-                    </div>
-
-                    <div>
-                        <h4>Sarah Lewis</h4>
-                        <span>CEO, Vertex Solutions</span>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Testimonial 5 -->
-            <article class="testimonial-card">
-                <div class="testimonial-quote" aria-hidden="true">
-                    <i class="fas fa-quote-left"></i>
-                </div>
-
-                <div
-                    class="testimonial-rating"
-                    aria-label="5 out of 5 stars"
-                >
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                    <i class="fas fa-star" aria-hidden="true"></i>
-                </div>
-
-                <blockquote>
-                    “Our new website looks better, performs faster, and gives
-                    our customers a much better experience. We are very happy
-                    with the final result.”
-                </blockquote>
-
-                <div class="testimonial-author">
-                    <div
-                        class="testimonial-avatar"
-                        aria-hidden="true"
-                    >
-                        MO
-                    </div>
-
-                    <div>
-                        <h4>Michael Okoro</h4>
-                        <span>Director, Crestline Enterprises</span>
-                    </div>
-                </div>
-            </article>
-
-        </div>
-
-    </div>
-</section>
-
-    <!-- ============ CONTACT SECTION ============ -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-tag">Get in Touch</span>
-                <h2>Let's Build <span class="gradient-text">Something Great</span></h2>
-                <p>Have a project in mind? We'd love to hear from you.</p>
-            </div>
-            
-            <div class="contact-grid">
-                <div class="contact-info" data-aos="fade-right">
-                    <div class="contact-card">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <a href="mailto:hello@aileum.com">hello@aileum.com</a>
-                        </div>
-                    </div>
-                    <div class="contact-card">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Phone</h4>
-                            <a href="tel:+2349162315141">+234 916 231 5141</a>
-                        </div>
-                    </div>
-                    <div class="contact-card">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Location</h4>
-                            <p>Delta, Nigeria</p>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://github.com/Aileum-Technologies-LTD" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/company/aileum/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                
-<form
-          class="contact-form"
-          data-aos="fade-left"
-          id="contactForm"
-          action="https://formspree.io/f/xwlkkyrv"
-          method="POST"
-        >
-          <div class="form-group">
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Your Name"
-              required
-            />
-          </div>
-        
-          <div class="form-group">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Your Email"
-              required
-            />
-          </div>
-        
-          <div class="form-group">
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              placeholder="Subject"
-            />
-          </div>
-        
-          <div class="form-group">
-            <textarea
-              id="message"
-              name="message"
-              rows="5"
-              placeholder="Tell us about your project..."
-              required
-            ></textarea>
-          </div>
-        
-          <button type="submit" class="btn-primary">
-            <i class="fas fa-paper-plane"></i>
-            Send Message
-          </button>
-</form>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- ============ FOOTER ============ -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <img src="images/aileum.png" alt="Aileum Technologies" />
-                    <h3>AILEUM</h3>
-                    <p>Practical tech solutions for data, automation, and web design.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <a href="#home">Home</a>
-                    <a href="#services">Services</a>
-                    <a href="#about">About</a>
-                    <a href="#team">Team</a> 
-                    <a href="#portfolio">Portfolio</a>
-                </div>
-                <div class="footer-links">
-                    <h4>Services</h4>
-                    <a href="#services">Excel Automation</a>
-                    <a href="#services">Machine Learning</a>
-                    <a href="#services">Web Design</a>
-                    <a href="#services">Other Tech Services</a>
-                </div>
-                <div class="footer-newsletter">
-                    <h4>Stay Updated</h4>
-                    <p>Subscribe for tech insights and updates</p>
-                    
-                    <form id="newsletterForm" action="https://formspree.io/f/mnpqqwyp" method="POST">
-                            <input
-                                type="email"
-                                name="email"
-                                placeholder="Your email address"
-                                required
-                            >
-                        
-                            <button
-                                type="submit"
-                                class="newsletter-submit"
-                                aria-label="Subscribe"
-                            >
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
-                    </form>
-                    
-                    <p id="newsletterStatus" aria-live="polite"></p>
-
-
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 <strong>Aileum Technologies Ltd</strong>. All rights reserved.</p>
-                <p>
-                    <i class="fas fa-certificate"></i>
-                    Registered with CAC Nigeria | RC: 9743407
-                </p>
-                <div class="footer-legal">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- ============ SCRIPTS ============ -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="assets/javascript/main.js"></script>
+  <footer><div class="container footer-top"><a class="logo footer-logo" href="#top"><img src="images/aileum.png" alt="" onerror="this.hidden=true"><span><strong>AILEUM</strong><small>TECHNOLOGIES LTD.</small></span></a><p>Professional web, data and machine-learning solutions designed around real needs.</p><div><a href="https://www.linkedin.com/company/aileum/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/Aileum-Technologies-LTD" target="_blank" rel="noopener">GitHub</a></div></div><div class="container footer-bottom"><span>© <b id="year"></b> Aileum Technologies Ltd.</span><span>CAC RC 9743407</span><a href="#top">Back to top ↑</a></div></footer>
+  <a class="whatsapp" href="https://wa.me/2349162315141?text=Hello%20Aileum%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener" aria-label="Chat with Aileum on WhatsApp"><span>Chat on WhatsApp</span><b>↗</b></a>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

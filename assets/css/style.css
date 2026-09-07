@@ -234,7 +234,7 @@ img {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--yellow);
+  background: var(--green);
   box-shadow: 0 0 0 5px rgba(255, 200, 61, 0.1);
 }
 .hero-lead {
